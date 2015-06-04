@@ -1,7 +1,7 @@
-Onsen UI Quick Startup Guide
+Quick Startup Guide
 ====
 
-This document describes the minimum information required to develop an app using Onsen UI.
+This document describes the minimum requirements.
 
 ## Requirement
 
