@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>My App</title>  
+  
+  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">  
+  <link rel="stylesheet" href="styles/onsen-css-components-blue-basic-theme.css">  
+  <link rel="stylesheet" href="styles/app.css"/>
+
+  <script src="lib/onsen/js/angular/angular.js"></script>    
+  <script src="lib/onsen/js/onsenui.js"></script>    
+
+  <script src="cordova.js"></script>
+
+  <script>
+    var module = angular.module('app', ['onsen']);
+  </script>
+
+  <style>
+    .page--menu-page__background {
+      background-color: #333;
+    }
+    
+    .page--menu-page__content {
+      color: white;
+    }
+
+    .menu-close,
+    .menu-close > .toolbar-button {
+      color: #999;
+    }
+
+    .menu-list,
+    .menu-item:first-child,
+    .menu-item:last-child,
+    .menu-item {
+      background-color: transparent;
+      background-image: none !important;
+      border-color: transparent;
+      color: #fff;
+    }
+
+    .menu-item {
+      padding: 0 0 0 20px;
+      line-height: 52px;
+      height: 52px;
+      text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;
+    }
+
+    .menu-item:active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-notification {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 14px;
+      height: 16px;
+      line-height: 16px;
+      min-width: 16px;
+      font-weight: 600;
+    }
+
+    .bottom-menu-list,
+    .bottom-menu-item:first-child,
+    .bottom-menu-item:last-child,
+    .bottom-menu-item {
+      border-color: #393939;
+      background-color: transparent;
+      background-image: none !important;
+      color: #ccc;
+    }
+
+    .bottom-menu-item:active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+  
+</head>
+
+<body>    
+  
+<!--Slide Menu-->
+  <ons-sliding-menu
+    menu-page="menu.html" main-page="home.html" side="left"
+    var="menu" type="reveal" max-slide-distance="200px" swipeable="true">
+  </ons-sliding-menu>
+
+  <ons-template id="menu.html">
+    <ons-page modifier="menu-page">
+      <ons-toolbar modifier="transparent"></ons-toolbar>
+
+	<!--Menu List-->>
+      <ons-list class="menu-list">
+      <!--Menu Item 1-->
+        <ons-list-item class="menu-item" ng-click="menu.setMainPage('home.html', {closeMenu: true})">
+          <ons-icon icon="fa-home" fixed-width="true"></ons-icon>
+          Home
+        </ons-list-item>
+
+	 <!--Menu Item 2-->
+        <ons-list-item class="menu-item" ng-click="menu.setMainPage('upload.html', {closeMenu: true})">
+          <ons-icon icon="fa-upload" fixed-width="true"></ons-icon>
+          Upload
+        </ons-list-item>
+        
+
+      <ons-list class="bottom-menu-list">
+        <ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('settings.html', {closeMenu: true})">
+          Settings
+        </ons-list-item>
+
+        <ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('#', {closeMenu: true})">
+          Open in Browser
+        </ons-list-item>
+
+        <ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('#', {closeMenu: true})">
+          Logout
+        </ons-list-item>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+
+<!--home.html-->
+  <ons-template id="home.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Home</div>
+      </ons-toolbar>
+
+      <!--Search Box -->
+      <ons-row id="searchRow" align="center">
+      <ons-col align="center">
+      	<input id="searchBox" type="search" placeholder="Search" onClick="menu.setMainPage('search.html', {closeMenu: true})"/>
+        
+        <style>
+			#searchRow{
+				text-align:center;
+				padding-top:10px;		
+			}
+			#searchBox{
+				width:200px;
+				height:20px;
+				border-radius:.9;
+				text-align:center;
+			}
+		</style>
+        </ons-col>
+      </ons-row>
+      
+      
+      <!--Document List -->
+      <ons-row style="margin-top: 35px; text-align: center;">
+        
+        <ons-col>
+        
+   	    <!--Might want to switch to modal-->
+         
+         <style>
+		 #docIcon{padding-left:0px;}
+		 </style>
+            <ons-row allign="center">
+                <ons-col id=docIcon ng-click="menu.setMainPage('info.html', {closeMenu: true})">
+                <img src="img/Icons/pdf19.png"
+                style="height:100px; width:100px;" />
+                <p>#1 PDF Doc Title</p>
+                </ons-col>
+
+             	<ons-col id=docIcon ng-click="menu.setMainPage('info.html', {closeMenu: true})">
+                <label for="infoToggle"> 
+                <img src="img/Icons/jpg3.png" 
+                style="height:100px; width:100px;" />
+                <p>#2 JPG Title</p>
+                </label>
+                </ons-col>
+                
+                <ons-col id=docIcon ng-click="menu.setMainPage('info.html', {closeMenu: true})">
+             	<label for="infoToggle"> 
+                <img src="img/Icons/mp4.png" 
+                style="height:100px; width:100px;" />
+                <p>#3 MP4 Title</p>
+                </label>
+            	</ons-col>
+
+            </ons-row>
+            
+            
+            <ons-row allign="center" style>
+                <ons-col id=docIcon ng-click="menu.setMainPage('info.html', {closeMenu: true})">
+             	<label for="infoToggle">
+                <img src="img/Icons/docx.png"
+                style="height:100px; width:100px;" />
+                <p>#4 Word Doc Title</p>
+                </label>
+                </ons-col>
+
+             	<ons-col id=docIcon ng-click="menu.setMainPage('info.html', {closeMenu: true})">
+                <label for="infoToggle"> 
+                <img src="img/Icons/xlsx.png" 
+                style="height:100px; width:100px;" />
+                <p>#5 Excel Doc Title</p>
+                </label>
+                </ons-col>
+                
+                <ons-col id=docIcon ng-click="menu.setMainPage('info.html', {closeMenu: true})">
+             	<label for="infoToggle"> 
+                <img src="img/Icons/mp4.png" 
+                style="height:100px; width:100px;" />
+                <p>#6 MP4 Title</p>
+                </label>
+            	</ons-col>
+                
+            </ons-row>
+          
+
+          <p style="color: #999; font-size: 13px;">This will be the home page where a document list goes. </p>
+        </ons-col>
+      </ons-row>
+    </ons-page>
+  </ons-template>
+
+<!--upload.html-->
+  <ons-template id="upload.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Upload</div>
+      </ons-toolbar>
+
+
+      <ons-row style="margin-top: 100px; text-align: center;">
+        <ons-col>
+                   
+ <form action="uploads/upload.php" method="post" enctype="multipart/form-data">
+  <input type="file" name="file" style="width:275px;"><br>
+  <input type="submit" value="Upload">
+</form>    
+
+        </ons-col>
+      </ons-row>
+
+    </ons-page>
+  </ons-template>
+ 
+<!--settings.html-->
+  <ons-template id="settings.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Settings</div>
+      </ons-toolbar>
+
+
+      <ons-row style="margin-top: 100px; text-align: center;">
+        <ons-col>
+                   <p style="color: #999; font-size: 13px;">This will be the settings page will be</p>
+        </ons-col>
+      </ons-row>
+
+    </ons-page>
+  </ons-template>
+ 
+ 
+<!--info.html-->
+  <ons-template id="info.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Info</div>
+      </ons-toolbar>
+
+
+      <ons-row style="margin-top: 100px; text-align: center;">
+        <ons-col>
+        
+        <!--Document Title-->
+        <h1>Document Title</h1>
+        <img src="img/Icons/defaultDoc.png" 
+           style="height:100px; width:100px;"/>
+           
+		<!--Action Buttons-->
+        <br>
+        	<img id="abut" src="img/Icons/Actions/addPerson.png"style="width:35px; height:35px;"/>
+            <img id="abut" src="img/Icons/Actions/download.png" style="width:35px; height:35px;"/>
+            <img id="abut" src="img/Icons/Actions/shareURL.png" style="width:35px; height:35px;" onClick="copyURL();"/>
+            
+            <script>
+				function copyURL(){
+					var person = prompt("Copy to Clipboard", "URL will go here");	
+				}
+		 	</script>
+
+        <style>
+			#abut{
+				padding-left:5px; 
+				padding-right:5px; 
+				padding-top:5px;
+				padding-bottom: 30px;
+			}
+		</style>
+                    
+                    
+        </ons-col>
+        
+        <!--File Details-->
+      </ons-row>
+      <ons-row style="padding-left:25%; border-top: 3px solid; border-bottom:3px solid;">      
+      	<p style="font-weight:bold;">Size: <br>
+      	Date Created: <br>
+      	File Type: </p>
+      </ons-row>
+      
+      <ons-row style="padding-left:25%;">
+      	<p style="font-weight:bold;">Currently Shared With:</p>
+        <p> <br> Nobody</p>
+      </ons-row>
+
+    </ons-page>
+  </ons-template>
+
+ 
+<!--search.html-->
+  <ons-template id="search.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Home</div>
+      </ons-toolbar>
+
+<ons-row id="searchRow" align="center">
+      <ons-col align="center">
+      	<input type="text" id="searchTerm" class="search_box" placeholder="Search"onkeyup="doSearch()" />
+        
+        <style>
+			#searchRow{
+				text-align:center;
+				padding-top:10px;		
+			}
+			#searchTerm{
+				width:200px;
+				height:20px;
+				border-radius:.9;
+				text-align:center;
+			}
+		</style>
+        </ons-col>
+      </ons-row>
+
+      <ons-row style="margin-top: 20px; text-align: center;">
+        <ons-col>
+
+
+
+        </ons-col>
+      </ons-row>
+      
+       <ons-row style="margin-top: 35px; text-align: center;">
+        
+        <ons-col>       
+     
+     <!--Search Results Table -->
+     <table id="dataTable" border="1" width="100%" cellspacing="0" cellpadding="5">
+     <thead>
+         <tr>
+            <th>Document Name</th>
+
+         </tr>
+             </thead>
+             <tbody>     
+                 <tr>
+                    <td><label for="infoToggle" id="sr">#1 PDF Doc Title</label></td>
+                 </tr>
+                 <tr>
+                    <td><label for="infoToggle" id="sr">#2 JPG Title</label></td>
+                 </tr>
+                 <tr>
+                    <td><label for="infoToggle" id="sr">#3 MP4 Title</label></td>
+                 </tr>
+                    <td><label for="infoToggle" id="sr">#4 Word Doc Title</label></td>
+                 </tr>
+                 <tr>
+                    <td><label for="infoToggle" id="sr">#5 Excel Doc Title</label></td>
+                 </tr>
+                 <tr>
+                    <td><label for="infoToggle" id="sr">#6 PDF Doc Title</label></td>
+                 </tr>
+                 <tr>
+                    <td><label for="infoToggle" id="sr">#7 PDF Doc Title</label></td>
+                 </tr>
+             </tbody>
+        </table>
+
+          <p style="color: #999; font-size: 13px;">This will be the search page where a document result list goes. </p>
+          
+          
+          <script>
+	function doSearch() {
+		var searchText = document.getElementById('searchTerm').value;
+		var targetTable = document.getElementById('dataTable');
+		var targetTableColCount;
+				
+		//Loop through table rows
+		for (var rowIndex = 0; rowIndex < targetTable.rows.length; rowIndex++) {
+			var rowData = '';
+	
+			//Get column count from header row
+			if (rowIndex == 0) {
+			   targetTableColCount = targetTable.rows.item(rowIndex).cells.length;
+			   continue; //do not execute further code for header row.
+			}
+					
+			//Process data rows. (rowIndex >= 1)
+			for (var colIndex = 0; colIndex < targetTableColCount; colIndex++) {
+				rowData += targetTable.rows.item(rowIndex).cells.item(colIndex).textContent;
+			}
+	
+			//If search term is not found in row data
+			//then hide the row, else show
+			if (rowData.indexOf(searchText) == -1)
+				targetTable.rows.item(rowIndex).style.display = 'none';
+			else
+				targetTable.rows.item(rowIndex).style.display = 'table-row';
+		}
+	}
+		</script>
+
+		<style>
+        #dataTable{
+            width:100%;
+            padding-left:3px;
+            padding-top:10px;
+            border:none;
+        }
+        td{
+            padding: 15px 0 15px 0;
+            text-align:center;
+            vertical-align:central;
+            border-color:#000000;
+            border-bottom:none;
+            border-left:none;
+            border-right:none;
+            font-size:18px;
+            
+        }
+        th{
+            visibility:hidden;	
+        }
+        #sr{
+            width:100%;
+            border-radius:0px;
+            text-align:left;
+            border:none;
+            color:#0000000;
+            text-shadow:none;
+            font-weight:250;
+            
+        }
+        </style>
+          
+          
+        </ons-col>
+      </ons-row>
+    </ons-page>
+  </ons-template>
+
+    </ons-page>
+  </ons-template>
+ 
