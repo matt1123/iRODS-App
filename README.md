@@ -1,35 +1,23 @@
-Quick Startup Guide
+Startup Guide
 ====
 
-This document describes the minimum requirements.
+This app was developed using Onsen UI, Cordova, & Node.js.
 
 ## Requirement
 
- * Node.js - [Install Node.js](http://nodejs.org)
- * Cordova - Install by `npm install cordova`
+ * Node.js  - [Install Node.js](http://nodejs.org)
+ * Cordova  - Install by `npm install cordova`
+ * Onsen UI - Install by `$ bower install onsenui`
 
-## Development Instructions
-
-1. Install dependencies
-
-    $ npm install
-
-2. Install Gulp globally
-
-    $ npm install -g gulp
-
-3. Run `gulp serve` and run the web server
-
-    $ gulp serve
-
-You should see running app on browser and you can start to develop your app with Onsen UI.
 
 ### Directory Layout
 
     README.md     --> This file
     gulpfile.js   --> Gulp tasks definition
     www/          --> Asset files for app
-      index.html  --> App entry point
+      index.html  --> App entry point (login page)
+      app.html    --> Main App
+      img/        --> Images and Icons Used 
       js/
       styles/
       lib/onsen/
@@ -41,8 +29,4 @@ You should see running app on browser and you can start to develop your app with
     merges/       --> Cordova merge directory
     hooks/        --> Cordova hook directory
 
-## Gulp Tasks
 
- * `gulp serve` - Running the app for development.
- * `gulp build` - Build several files for project.
- * `gulp jshint` - Generate [jshint](https://github.com/jshint/jshint) report.
