@@ -79,6 +79,7 @@ j,.<!doctype html>
     }
   </style>
   
+	<link rel="stylesheet" href="main.css">
 </head>
 
 <body>    
@@ -97,19 +98,19 @@ j,.<!doctype html>
       <ons-list class="menu-list">
       <!--Menu Item 1-->
         <ons-list-item class="menu-item" ng-click="menu.setMainPage('home.html', {closeMenu: true})">
-          <ons-icon icon="fa-home" fixed-width="true"></ons-icon>
+          <ons-icon icon="fa-home" fixed-width="true" class="menuIcon"></ons-icon>
           Home
         </ons-list-item>
 
 	 <!--Menu Item 2-->
         <ons-list-item class="menu-item" ng-click="menu.setMainPage('upload.html', {closeMenu: true})">
-          <ons-icon icon="fa-upload" fixed-width="true"></ons-icon>
+          <ons-icon icon="fa-upload" fixed-width="true" class="menuIcon"></ons-icon>
           Upload
         </ons-list-item>
         
 	<!--Menu Item 3-->
         <ons-list-item class="menu-item" ng-click="menu.setMainPage('not.html', {closeMenu: true})">
-          <ons-icon icon="fa-check-circle" fixed-width="true"></ons-icon>
+          <ons-icon icon="fa-check-circle" fixed-width="true" class="menuIcon"></ons-icon>
           Notifications
         </ons-list-item>
     
@@ -190,10 +191,10 @@ j,.<!doctype html>
 <!--home.html-->
   <ons-template id="home.html">
     <ons-page>
-      <ons-toolbar>
+      <ons-toolbar class="toolbar">
         <div class="left">
           <ons-toolbar-button ng-click="menu.toggle()">
-            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+            <ons-icon class="menuButton" icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
           </ons-toolbar-button>
         </div>
         <div class="center">Home</div>
@@ -209,35 +210,43 @@ j,.<!doctype html>
       <ons-row style="margin-top: 35px; text-align: center;">
         
         <ons-navigator title="Navigator" var="myNavigator">
+        <input type="search" class="search-input" placeholder="Search"></input>
+        
         <ons-list>
         
-             <ons-list-header style="padding-top: 5px" >
-             	<input type="search" class="search-input" placeholder="Search"></input>
-             </ons-list-header>
+        	<ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('collection.html', { animation : 'slide' } )" ng-click="col-title=1">
+                <ons-icon icon="fa-folder" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="collectionName"> Collection 1 </p> </p>
+            </ons-list-item>
+            
+                    	<ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('collection.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-folder" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="collectionName"> Collection 2 </p> </p>
+            </ons-list-item>
                 
             <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
-                <p id="content"><img id="docImg" src="img/Icons/pdf19.png"/>
-                <p id="content"> #1 PDF Document </p> </p>
+                <ons-icon icon="fa-file-pdf-o" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="fileName"> #1 PDF Document </p> </p>
             </ons-list-item>
             
             <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
-                <p id="content"><img id="docImg" src="img/Icons/jpg3.png"/>
-                <p id="content"> #2 JPG Document </p> </p>
+                <ons-icon icon="fa-picture-o" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="fileName"> #2 JPG Document </p> </p>
             </ons-list-item>
             
                         <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
-                <p id="content"><img id="docImg" src="img/Icons/xlsx.png"/>
-                <p id="content"> #3 Excel Document </p> </p>
+                <ons-icon icon="fa-file-excel-o" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="fileName"> #3 Excel Document </p> </p>
             </ons-list-item>
             
                         <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
-                <p id="content"><img id="docImg" src="img/Icons/docx.png"/>
-                <p id="content"> #4 Word Document </p> </p>
+                <ons-icon icon="fa-file-word-o" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="fileName"> #4 Word Document </p> </p>
             </ons-list-item>
             
                         <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
-                <p id="content"><img id="docImg" src="img/Icons/pdf19.png"/>
-                <p id="content"> #5 PDF Document </p> </p>
+                <ons-icon icon="fa-file-pdf-o" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="fileName"> #5 PDF Document </p> </p>
             </ons-list-item>
             
         </ons-list>
@@ -261,12 +270,13 @@ j,.<!doctype html>
   </style>
 
 <!--upload.html-->
-   <ons-template id="upload.html">
+  <ons-template id="upload.html">
     <ons-page>
-      <ons-toolbar>
+      <ons-toolbar class="toolBar">
         <div class="left">
           <ons-toolbar-button ng-click="menu.toggle()">
-            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+            <ons-icon class="menuButton" icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+            
           </ons-toolbar-button>
         </div>
         <div class="center">Upload</div>
@@ -274,92 +284,41 @@ j,.<!doctype html>
 
 
       <ons-row style="margin-top: 100px; text-align: center;">
-        <ons-col>
+		<ons-col>
                    
-         <form action="uploads/upload.php" method="post" enctype="multipart/form-data">
-          <input type="file" name="file" style="width:275px;"><br>
-          <input type="submit" value="Upload">
-        </form>    
+<form action="uploads/upload.php" method="post" enctype="multipart/form-data">
+  <input type="file" name="file" style="width:275px;"><br>
+  <input type="submit" value="Upload">
+</form>    
+  
 
-        </ons-col>
+		</ons-col>
       </ons-row>
 
     </ons-page>
   </ons-template>
- 
-<!--settings.html-->
-  <ons-template id="settings.html">
-    <ons-page>
-      <ons-toolbar>
-        <div class="left">
-          <ons-toolbar-button ng-click="menu.toggle()">
-            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
-          </ons-toolbar-button>
-        </div>
-        <div class="center">Settings</div>
-      </ons-toolbar>
-
-
-     <div class="editInfo-form" align="center">
-
-        <input type="text" class="text-input--underbar" placeholder="Host" value="">
-        <input type="text" class="text-input--underbar" placeholder="Port" value="">
-        <input type="text" class="text-input--underbar" placeholder="Zone Name" value="">
-        <input type="text" class="text-input--underbar" placeholder="Username" value="">
-        <input type="password" class="text-input--underbar" placeholder="Password" value="">
-        <br><br>
-        <ons-button modifier="large" class="edit-button" ng-click="menu.setMainPage('home.html', {closeMenu: true})">Save Changes</ons-button>
-        <br><br>
-      </div>
-      
-      <style>
-	  	.editInfo-form {
-		  text-align: center;
-		  width: 80%;
-		  margin: 60px auto 0;
-		}
-		
-		input[type=text], input[type=password] {
-		  width: 100%;
-		  margin: 0 auto;
-		  outline: none;
-		  padding-top: 24px;
-		  padding-bottom: 24px;
-		}
-		
-		.edit-button {
-		  width: 100%;
-		  margin: 0 auto;
-		}
-		
-		.forgot-password {
-		  display: block;
-		  margin: 8px auto 0 auto;
-		  font-size: 14px;
-		}
-	  </style>
-
-     
-    </ons-page>
-  </ons-template>
   
   <style>
-  	#setText{
-		font-weight:bold;
-		text-align:left;
-		padding-left: 90px;
-	}
-	#pinbut{
-		border-radius:50px;
-		padding: 30px 30px 30px 30px;
-	}
+  input{
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #F05022;
+	display:inline-block;
+	cursor:pointer;
+	color:#777;
+	font-size:16px;
+	padding:16px 31px;
+	text-decoration:none;
+	margin-top:12px;
+}
+
   </style>
   
- 
 <!--info.html-->
-   <ons-template id="info.html">
+  <ons-template id="info.html">
     <ons-page>
-      <ons-toolbar>
+      <ons-toolbar class="toolBar">
         <div class="left"><ons-back-button>Back</ons-back-button></div>
         <div class="center">Info</div>
       </ons-toolbar>
@@ -369,7 +328,7 @@ j,.<!doctype html>
         <ons-col>
         
         <!--Document Title-->
-        <h1>Document Title</h1>
+        <h1 style="color:#F05022;">Document Title</h1>
         <img src="img/Icons/defaultDoc.png" 
            style="height:100px; width:100px;"/>
            
@@ -399,15 +358,15 @@ j,.<!doctype html>
         
         <!--File Details-->
       </ons-row>
-      <ons-row style="padding-left:25%; border-top: 3px solid; border-bottom:3px solid; text-align:left;">      
-      	<p style="font-weight:bold;">Size: <br>
+      <ons-row style="padding-left:25%; border-top: 3px solid; border-color:#777; border-bottom:3px solid #777; text-align:left;">      
+      	<p style="font-weight:bold;" class="collectionName">Size: <br>
       	Date Created: <br>
       	File Type: </p>
       </ons-row>
       
       <ons-row style="padding-left:25%;">
-      	<p style="font-weight:bold;">Currently Shared With:</p>
-        <p> <br> Nobody</p>
+      	<p style="font-weight:bold;" class="collectionName">Currently Shared With:</p>
+        <p style="color:#F05022;"> <br> Nobody</p>
       </ons-row>
 
     </ons-page>
@@ -416,10 +375,10 @@ j,.<!doctype html>
 <!--search.html-->
   <ons-template id="search.html">
     <ons-page>
-      <ons-toolbar>
+      <ons-toolbar class="toolBar">
         <div class="left">
           <ons-toolbar-button ng-click="menu.toggle()">
-            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+            <ons-icon class="menuButton" icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
           </ons-toolbar-button>
         </div>
         <div class="center">Home</div>
@@ -562,12 +521,12 @@ j,.<!doctype html>
   </ons-template>
   
 <!--not.html-->
-   <ons-template id="not.html">
+  <ons-template id="not.html">
     <ons-page>
-      <ons-toolbar>
+      <ons-toolbar class="toolBar">
         <div class="left">
           <ons-toolbar-button ng-click="menu.toggle()">
-            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+            <ons-icon class="menuButton" icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
           </ons-toolbar-button>
         </div>
         <div class="center">Notifications</div>
@@ -578,30 +537,30 @@ j,.<!doctype html>
         <ons-navigator title="Navigator" var="myNavigator">
         <ons-list>
       
-            <ons-list-header>{Date}</ons-list-header>
-            <ons-list-item modifier="chevron">
+            <ons-list-header class="listHeader">{Date}</ons-list-header>
+            <ons-list-item modifier="chevron" class="listItem">
             	{Notificaiton} {Time} {Date}
             </ons-list-item>
             
-            <ons-list-header>{Date}</ons-list-header>
-            <ons-list-item modifier="chevron">
+            <ons-list-header class="listHeader">{Date}</ons-list-header>
+            <ons-list-item modifier="chevron" class="listItem">
             	{Notificaiton} {Time} {Date}
             </ons-list-item>
-            <ons-list-item modifier="chevron">
+            <ons-list-item modifier="chevron" class="listItem">
             	{Notificaiton} {Time} {Date}
             </ons-list-item>
-            <ons-list-item modifier="chevron">
+            <ons-list-item modifier="chevron"  class="listItem">
             	{Notificaiton} {Time} {Date}
             </ons-list-item>
             
-            <ons-list-header>{Date}</ons-list-header>
-            <ons-list-item modifier="chevron">
+            <ons-list-header class="listHeader">{Date}</ons-list-header>
+            <ons-list-item modifier="chevron" class="listItem">
             	{Notificaiton} {Time} {Date}
             </ons-list-item>
-            <ons-list-item modifier="chevron">
+            <ons-list-item modifier="chevron" class="listItem">
             	{Notificaiton} {Time} {Date}
             </ons-list-item>
-            <ons-list-item modifier="chevron">
+            <ons-list-item modifier="chevron" class="listItem">
             	{Notificaiton} {Time} {Date}
             </ons-list-item>
 
@@ -609,6 +568,44 @@ j,.<!doctype html>
       </ons-list>
       </ons-navigator>
       </ons-row>
+
+    </ons-page>
+  </ons-template>
+  
+<!--collection.html-->
+<ons-template id="collection.html">
+    <ons-page>
+     
+
+      <ons-toolbar class="toolBar">
+        <div class="left"><ons-back-button class="backButton">Back</ons-back-button></div>
+        <div class="center">Collection</div>
+      </ons-toolbar>
+      
+      
+        	<ons-list>    
+            
+            <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('collection.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-folder" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" style="font-weight:bold;" class="collectionName"> SubCollection </p> </p>
+            </ons-list-item>
+            
+  				<ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-file-pdf-o" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="fileName"> #1 PDF Document </p> </p>
+            </ons-list-item>
+            
+            <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-picture-o" fixed-width="true"class="icon"></ons-icon>
+                <p id="content" class="fileName"> #2 JPG Document </p> </p>
+            </ons-list-item>
+            
+                        <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-file-excel-o" fixed-width="true" class="icon"></ons-icon>
+                <p id="content" class="fileName"> #3 Excel Document </p> </p>
+            </ons-list-item>
+			</ons-list>
+
 
     </ons-page>
   </ons-template>
