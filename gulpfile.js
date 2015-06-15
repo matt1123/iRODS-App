@@ -2,7 +2,10 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
+var install = require("gulp-install");
 
+gulp.src(['./bower.json', './package.json'])
+    .pipe(install());
 ////////////////////
 // build
 ////////////////////
