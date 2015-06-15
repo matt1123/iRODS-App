@@ -20,6 +20,7 @@
     "gulp-stylus": "^2.0.1",
     "gulp-task-listing": "^1.0.0",
     "jshint-stylish": "^1.0.1",
-    "run-sequence": "^1.1.0"
+    "run-sequence": "^1.1.0",
+    "bower": "^1.4.1"
   }
 }
