@@ -1,75 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mobile App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-  <link rel="stylesheet" href="bower_components/angular-message-center/message-center.css">
-  <link rel="stylesheet" href="app.css">
-  <!-- Bootstrap Core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mobile App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="components/angular-message-center/message-center.css">
+    <link rel="stylesheet" href="styles/app.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom CSS -->
-  <link href="css/sb-admin.css" rel="stylesheet">
-  <link href="css/main.css" rel="stylesheet">
-  
-  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
-  <link rel="stylesheet" href="lib/onsen/css/onsen-css-components-blue-basic-theme.css">
-
-  
-
+    <!-- Custom CSS -->
+    <link href="styles/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="components/onsenui/build/css/onsenui.css">
+    <link rel="stylesheet" href="components/onsenui/build/css/onsen-css-components-blue-basic-theme.css">
 </head>
 <body>
 
+<div></div>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<div ng-app="myApp">
 
+    <!-- angular templating -->
+    <!-- this is where content will be injected -->
+    <div ng-view class="main_wrapper"></div>
+</div>
 
+<script src="components/angular/angular.min.js"></script>
+<script src="components/angular-route/angular-route.min.js"></script>
+<script src="components/angular-route/angular-route.min.js"></script>
+<script src="components/angular-animate/angular-animate.min.js"></script>
+<script src="components/angular-message-center/dist/message-center.min.js"></script>
+<script src="components/jquery/dist/jquery.min.js"></script>
+<script src="components/jquery-ui/jquery-ui.js"></script>
+<script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/app.js"></script>
+<script src="components/onsenui/build/js/onsenui.js"></script>
+<script src="js/globals.js"></script>
+<script src="login/login.js"></script>
+<script src="js/httpInterceptors.js"></script>
 
-
-<div mc-messages></div>
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-  <div ng-app="myApp">
-     
-          <!-- angular templating -->
-          <!-- this is where content will be injected -->
-          <div ng-view class="main_wrapper"></div
-      
-
-  ></div>
-
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <!-- jQuery -->
-  <script src="js/jquery.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <!-- Bootstrap Core JavaScript -->
-  <script src="js/bootstrap.min.js"></script>
-  <script src="Angular/angular.min.js"></script>
-  <script src="Angular/angular-route.js"></script>
-  <script src="js/app.js"></script>
-   
-   
-  <script src="lib/onsen/js/angular/angular.js"></script>
-  <script src="lib/onsen/js/onsenui.js"></script>
-
-  <!--<script src="home/home.js"></script>
-  <script src="home/fileServices.js"></script>-->
-  <script src="login/login.js"></script>
-  <script src="js/httpInterceptors.js"></script>
-  <!--<script src="profile/profile.js"></script>
-  <script src="components/globals.js"></script>
-  <script src="components/version/version.js"></script>
-  
-  <script src="../bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support 
-  <script src="../bower_components/ng-file-upload/ng-file-upload.min.js"></script> 
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script> -->
 </body>
 </html>
