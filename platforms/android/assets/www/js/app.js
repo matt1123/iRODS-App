@@ -3,8 +3,11 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
-  //'myApp/home',
-  'myApp.login' 
+  'myApp.login',
+    'ngRoute',
+    'httpInterceptorModule',
+    'MessageCenter',
+    'globalsModule'
 
 ]).
 config(['$routeProvider', function($routeProvider) {
