@@ -1,14 +1,5 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
 
-    <link rel="stylesheet" href="../lib/onsen/css/onsenui.css">
-    <link rel="stylesheet" href="../lib/onsen/css/onsen-css-components-blue-basic-theme.css">
-    <link rel="stylesheet" href="../main.css">
-
-  </head>
-  
+<!--  
   <style>
 .login-form {
 	text-align: center;
@@ -53,53 +44,47 @@ select {
 	margin-top:10px;
 }
   </style>
-  <body ng-app="loginApp">
-        <ons-page>
-
-
-      <ons-toolbar class="toolBar">
-        <div class="left">
-        </div>
-        <div class="center">Log In Header</div>
-      </ons-toolbar>
+-->
 
 	  <div class="login-form" align="center" ng-controller="loginCtrl">
+        <ons-page>
+            
+        <ons-toolbar class="toolBar">
+            <div class="left">
+            </div>
+            <div class="center">Log In Header</div>
+        </ons-toolbar>
 
-        <input type="text" class="text-input--underbar" placeholder="Host" ng-model="login.host" required>
-        <input type="text" class="text-input--underbar" placeholder="Port" ng-model="login.host" required>
-        <input type="text" class="text-input--underbar" placeholder="Zone Name" ng-model="login.host" required>
-        <input type="text" class="text-input--underbar" placeholder="Username" ng-model="login.host" required>
-        <input type="password" class="text-input--underbar" placeholder="Password" ng-model="login.host" required><br>
-        
-        <select id="auth">
-        	<option value="" disabled selected>Authentication</option>
-            <option>Standard</option>
-            <option>PAM</option>
-        </select>
-        <br>
-        <button modifier="large" class="login-button" ng-click="submitLogin()" prevent-default>Log In</button>
-        
+            <input type="text" class="text-input--underbar" placeholder="Host" ng-model="login.host" required>
+            <input type="text" class="text-input--underbar" placeholder="Port" ng-model="login.host" required>
+            <input type="text" class="text-input--underbar" placeholder="Zone Name" ng-model="login.host" required>
+            <input type="text" class="text-input--underbar" placeholder="Username" ng-model="login.host" required>
+            <input type="password" class="text-input--underbar" placeholder="Password" ng-model="login.host" required><br>
+
+            <select id="auth">
+                <option value="" disabled selected>Authentication</option>
+                <option>Standard</option>
+                <option>PAM</option>
+            </select>
+            <br>
+            <button modifier="large" class="login-button" ng-click="submitLogin()" prevent-default>Log In</button>
+        </ons-page>
         
       </div>
       
       
-     
 
-
-    </ons-page>
-
-	
+	<!--
 
   <script src="../js/jquery.js"></script>
   <script src="../js/jquery-ui.js"></script>
-  <!-- Bootstrap Core JavaScript -->
+  <!-- Bootstrap Core JavaScript --><!--
   <script src="../js/bootstrap.min.js"></script>
   <script src="../Angular/angular.min.js"></script>
   <script src="../Angular/angular-route.js"></script>
   <script src="../js/app.js"></script>
    
    
-  <script src="../lib/onsen/js/angular/angular.js"></script>
   <script src="../lib/onsen/js/onsenui.js"></script>
 
   <script src="../bower_components/angular-animate.js"></script>
@@ -109,7 +94,6 @@ select {
   <script src="../bower_components/angular-translate.js"></script>
   
   <script src="../login/login.js"></script>
-  <script src="../components/httpInterceptors.js"></script>
+  <script src="../components/httpInterceptors.js"></script> -->
     
-  </body>
-</html>
+

@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>iRODS Mobile</title>  
+  
+  <link rel="stylesheet" href="../lib/onsen/css/onsenui.css">  
+  <link rel="stylesheet" href="../styles/onsen-css-components-blue-basic-theme.css">  
+  <link rel="stylesheet" href="../styles/app.css"/>
+
+  <script src="../lib/onsen/js/angular/angular.js"></script>    
+  <script src="../lib/onsen/js/onsenui.js"></script>    
+
+  <script src="../cordova.js"></script>
+
+  <script>
+    var module = angular.module('app', ['onsen']);
+  </script>
+
+  <style>
+    .page--menu-page__background {
+      background-color: #333;
+    }
+    
+    .page--menu-page__content {
+      color: white;
+    }
+    .menu-close,
+    .menu-close > .toolbar-button {
+      color: #999;
+    }
+    .menu-list,
+    .menu-item:first-child,
+    .menu-item:last-child,
+    .menu-item {
+      background-color: transparent;
+      background-image: none !important;
+      border-color: transparent;
+      color: #fff;
+    }
+    .menu-item {
+      padding: 0 0 0 20px;
+      line-height: 52px;
+      height: 52px;
+      text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;
+    }
+    .menu-item:active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .menu-notification {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 14px;
+      height: 16px;
+      line-height: 16px;
+      min-width: 16px;
+      font-weight: 600;
+    }
+    .bottom-menu-list,
+    .bottom-menu-item:first-child,
+    .bottom-menu-item:last-child,
+    .bottom-menu-item {
+      border-color: #393939;
+      background-color: transparent;
+      background-image: none !important;
+      color: #ccc;
+    }
+    .bottom-menu-item:active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+  
+	<link rel="stylesheet" href="main.css">
+</head>
+
+<body>    
+  
+<!--Slide Menu-->
+  <ons-sliding-menu
+    menu-page="menu.html" main-page="home.html" side="left"
+    var="menu" type="reveal" max-slide-distance="200px" swipeable="true">
+  </ons-sliding-menu>
+
+  <ons-template id="menu.html">
+    <ons-page modifier="menu-page">
+      <ons-toolbar modifier="transparent"></ons-toolbar>
+
+	<!--Menu List-->>
+      <ons-list class="menu-list">
+      <!--Menu Item 1-->
+        <ons-list-item class="menu-item" ng-click="menu.setMainPage('home.html', {closeMenu: true})">
+          <ons-icon icon="fa-home" fixed-width="true" class="menuIcon"></ons-icon>
+          Home
+        </ons-list-item>
+
+	 <!--Menu Item 2-->
+        <ons-list-item class="menu-item" ng-click="menu.setMainPage('upload.html', {closeMenu: true})">
+          <ons-icon icon="fa-upload" fixed-width="true" class="menuIcon"></ons-icon>
+          Upload
+        </ons-list-item>
+        
+	<!--Menu Item 3-->
+        <ons-list-item class="menu-item" ng-click="menu.setMainPage('not.html', {closeMenu: true})">
+          <ons-icon icon="fa-check-circle" fixed-width="true" class="menuIcon"></ons-icon>
+          Notifications
+        </ons-list-item>
+    
+    
+	<!--Menu Item 4-->
+            <ons-list-item class="bottom-menu-item" onclick="menu.setMainPage('settings.html', {closeMenu: true})">
+         	Settings
+        </ons-list-item>
+
+	<!--Menu Item 5-->
+            <ons-list-item class="bottom-menu-item" onclick="window.open('www.irods.org')">
+          Open in Browser
+        </ons-list-item>
+        
+	<!--Menu Item 6-->
+        <ons-list-item class="bottom-menu-item" onclick="location.href='index.html';">
+          Logout
+        </ons-list-item>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+
+<!--login.html-->
+  <ons-template id="login.html">
+    <ons-page>
+
+
+      <ons-toolbar>
+        <div class="left">
+        </div>
+        <div class="center">Log In</div>
+      </ons-toolbar>
+
+	  <div class="login-form" align="center">
+
+        <input type="text" class="text-input--underbar" placeholder="Host" value="">
+        <input type="text" class="text-input--underbar" placeholder="Port" value="">
+        <input type="text" class="text-input--underbar" placeholder="Zone Name" value="">
+        <input type="text" class="text-input--underbar" placeholder="Username" value="">
+        <input type="password" class="text-input--underbar" placeholder="Password" value="">
+        <br><br>
+        <ons-button modifier="large" class="login-button" ng-click="menu.setMainPage('home.html', {closeMenu: true})">Log In</ons-button>
+        <br><br>
+        <ons-button modifier="quiet" class="forgot-password">Forgot password?</ons-button>
+      </div>
+      
+      <style>
+	  	.login-form {
+		  text-align: center;
+		  width: 80%;
+		  margin: 60px auto 0;
+		}
+		
+		input[type=text], input[type=password] {
+		  width: 100%;
+		  margin: 0 auto;
+		  outline: none;
+		  padding-top: 24px;
+		  padding-bottom: 24px;
+		}
+		
+		.login-button {
+		  width: 100%;
+		  margin: 0 auto;
+		}
+		
+		.forgot-password {
+		  display: block;
+		  margin: 8px auto 0 auto;
+		  font-size: 14px;
+		}
+	  </style>
+
+
+    </ons-page>
+  </ons-template>
+ 
+<!--home.html-->
+  <ons-template id="home.html">
+    <ons-page>
+      <ons-toolbar class="toolbar">
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon class="menuButton" icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Home</div>
+          
+      </ons-toolbar>
+
+
+      
+      
+      
+      <!--Document List -->
+
+      <ons-row style="margin-top: 35px; text-align: center;">
+        
+        <ons-navigator title="Navigator" var="myNavigator">
+        <input type="search" class="search-input" placeholder="Search"></input>
+        
+        <ons-list>
+        
+        	<ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('collection.html', { animation : 'slide' } )" ng-click="col-title=1">
+                <ons-icon icon="fa-folder" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="collectionName"> Collection 1 </p> </p>
+            </ons-list-item>
+            
+                    	<ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('collection.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-folder" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="collectionName"> Collection 2 </p> </p>
+            </ons-list-item>
+                
+            <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-file-pdf-o" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="fileName"> #1 PDF Document </p> </p>
+            </ons-list-item>
+            
+            <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-picture-o" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="fileName"> #2 JPG Document </p> </p>
+            </ons-list-item>
+            
+                        <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-file-excel-o" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="fileName"> #3 Excel Document </p> </p>
+            </ons-list-item>
+            
+                        <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-file-word-o" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="fileName"> #4 Word Document </p> </p>
+            </ons-list-item>
+            
+                        <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-file-pdf-o" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="fileName"> #5 PDF Document </p> </p>
+            </ons-list-item>
+            
+        </ons-list>
+        </ons-navigator>
+        
+        
+      </ons-row>
+      
+    </ons-page>
+  </ons-template>
+  
+  <style>
+  	#docImg{
+		height:30px; 
+		width:30px;
+		padding-top:15px;
+	}
+	#content{
+		display:inline;
+	}
+  </style>
+
+<!--upload.html-->
+  <ons-template id="upload.html">
+    <ons-page>
+      <ons-toolbar class="toolBar">
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon class="menuButton" icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+            
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Upload</div>
+      </ons-toolbar>
+
+
+      <ons-row style="margin-top: 100px; text-align: center;">
+		<ons-col>
+                   
+<form action="uploads/upload.php" method="post" enctype="multipart/form-data">
+  <input type="file" name="file" style="width:275px;"><br>
+  <input type="submit" value="Upload">
+</form>    
+  
+
+		</ons-col>
+      </ons-row>
+
+    </ons-page>
+  </ons-template>
+  
+  <style>
+  input{
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #F05022;
+	display:inline-block;
+	cursor:pointer;
+	color:#777;
+	font-size:16px;
+	padding:16px 31px;
+	text-decoration:none;
+	margin-top:12px;
+}
+  </style>
+  
+<!--info.html-->
+  <ons-template id="info.html">
+    <ons-page>
+      <ons-toolbar class="toolBar">
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Info</div>
+      </ons-toolbar>
+
+
+      <ons-row style="margin-top: 30px; text-align: center;">
+        <ons-col>
+        
+        <!--Document Title-->
+        <h1 style="color:#F05022;">Document Title</h1>
+        <img src="img/Icons/defaultDoc.png" 
+           style="height:100px; width:100px;"/>
+           
+		<!--Action Buttons-->
+        <br>
+        	<img id="abut" src="img/Icons/Actions/addPerson.png"style="width:35px; height:35px;"/>
+            <img id="abut" src="img/Icons/Actions/download.png" style="width:35px; height:35px;"/>
+            <img id="abut" src="img/Icons/Actions/shareURL.png" style="width:35px; height:35px;" onClick="copyURL();"/>
+            
+            <script>
+				function copyURL(){
+					var person = prompt("Copy to Clipboard", "URL will go here");	
+				}
+		 	</script>
+
+        <style>
+			#abut{
+				padding-left:5px; 
+				padding-right:5px; 
+				padding-top:5px;
+				padding-bottom: 30px;
+			}
+		</style>
+                    
+                    
+        </ons-col>
+        
+        <!--File Details-->
+      </ons-row>
+      <ons-row style="padding-left:25%; border-top: 3px solid; border-color:#777; border-bottom:3px solid #777; text-align:left;">      
+      	<p style="font-weight:bold;" class="collectionName">Size: <br>
+      	Date Created: <br>
+      	File Type: </p>
+      </ons-row>
+      
+      <ons-row style="padding-left:25%;">
+      	<p style="font-weight:bold;" class="collectionName">Currently Shared With:</p>
+        <p style="color:#F05022;"> <br> Nobody</p>
+      </ons-row>
+
+    </ons-page>
+  </ons-template>
+ 
+<!--search.html-->
+  <ons-template id="search.html">
+    <ons-page>
+      <ons-toolbar class="toolBar">
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon class="menuButton" icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Home</div>
+      </ons-toolbar>
+
+<ons-row id="searchRow" align="center">
+      <ons-col align="center">
+      	<input type="text" id="searchTerm" class="search_box" placeholder="Search"onkeyup="doSearch()" />
+        
+        <style>
+			#searchRow{
+				text-align:center;
+				padding-top:10px;		
+			}
+			#searchTerm{
+				width:200px;
+				height:20px;
+				border-radius:.9;
+				text-align:center;
+			}
+		</style>
+        </ons-col>
+      </ons-row>
+
+      <ons-row style="margin-top: 20px; text-align: center;">
+        <ons-col>
+
+
+
+        </ons-col>
+      </ons-row>
+      
+       <ons-row style="margin-top: 35px; text-align: center;">
+        
+        <ons-col>       
+     
+     <!--Search Results Table -->
+     <table id="dataTable" border="1" width="100%" cellspacing="0" cellpadding="5">
+     <thead>
+         <tr>
+            <th>Document Name</th>
+
+         </tr>
+             </thead>
+             <tbody>     
+                 <tr>
+                    <td><label for="infoToggle" id="sr">#1 PDF Doc Title</label></td>
+                 </tr>
+                 <tr>
+                    <td><label for="infoToggle" id="sr">#2 JPG Title</label></td>
+                 </tr>
+                 <tr>
+                    <td><label for="infoToggle" id="sr">#3 MP4 Title</label></td>
+                 </tr>
+                    <td><label for="infoToggle" id="sr">#4 Word Doc Title</label></td>
+                 </tr>
+                 <tr>
+                    <td><label for="infoToggle" id="sr">#5 Excel Doc Title</label></td>
+                 </tr>
+                 <tr>
+                    <td><label for="infoToggle" id="sr">#6 PDF Doc Title</label></td>
+                 </tr>
+                 <tr>
+                    <td><label for="infoToggle" id="sr">#7 PDF Doc Title</label></td>
+                 </tr>
+             </tbody>
+        </table>
+
+          <p style="color: #999; font-size: 13px;">This will be the search page where a document result list goes. </p>
+          
+          
+          <script>
+	function doSearch() {
+		var searchText = document.getElementById('searchTerm').value;
+		var targetTable = document.getElementById('dataTable');
+		var targetTableColCount;
+				
+		//Loop through table rows
+		for (var rowIndex = 0; rowIndex < targetTable.rows.length; rowIndex++) {
+			var rowData = '';
+	
+			//Get column count from header row
+			if (rowIndex == 0) {
+			   targetTableColCount = targetTable.rows.item(rowIndex).cells.length;
+			   continue; //do not execute further code for header row.
+			}
+					
+			//Process data rows. (rowIndex >= 1)
+			for (var colIndex = 0; colIndex < targetTableColCount; colIndex++) {
+				rowData += targetTable.rows.item(rowIndex).cells.item(colIndex).textContent;
+			}
+	
+			//If search term is not found in row data
+			//then hide the row, else show
+			if (rowData.indexOf(searchText) == -1)
+				targetTable.rows.item(rowIndex).style.display = 'none';
+			else
+				targetTable.rows.item(rowIndex).style.display = 'table-row';
+		}
+	}
+		</script>
+
+		<style>
+        #dataTable{
+            width:100%;
+            padding-left:3px;
+            padding-top:10px;
+            border:none;
+        }
+        td{
+            padding: 15px 0 15px 0;
+            text-align:center;
+            vertical-align:central;
+            border-color:#000000;
+            border-bottom:none;
+            border-left:none;
+            border-right:none;
+            font-size:18px;
+            
+        }
+        th{
+            visibility:hidden;	
+        }
+        #sr{
+            width:100%;
+            border-radius:0px;
+            text-align:left;
+            border:none;
+            color:#0000000;
+            text-shadow:none;
+            font-weight:250;
+            
+        }
+        </style>
+          
+          
+        </ons-col>
+      </ons-row>
+    </ons-page>
+  </ons-template>
+  
+<!--not.html-->
+  <ons-template id="not.html">
+    <ons-page>
+      <ons-toolbar class="toolBar">
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon class="menuButton" icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Notifications</div>
+      </ons-toolbar>
+		
+      <ons-row style="margin-top: 35px; text-align: center;">
+        
+        <ons-navigator title="Navigator" var="myNavigator">
+        <ons-list>
+      
+            <ons-list-header class="listHeader">{Date}</ons-list-header>
+            <ons-list-item modifier="chevron" class="listItem">
+            	{Notificaiton} {Time} {Date}
+            </ons-list-item>
+            
+            <ons-list-header class="listHeader">{Date}</ons-list-header>
+            <ons-list-item modifier="chevron" class="listItem">
+            	{Notificaiton} {Time} {Date}
+            </ons-list-item>
+            <ons-list-item modifier="chevron" class="listItem">
+            	{Notificaiton} {Time} {Date}
+            </ons-list-item>
+            <ons-list-item modifier="chevron"  class="listItem">
+            	{Notificaiton} {Time} {Date}
+            </ons-list-item>
+            
+            <ons-list-header class="listHeader">{Date}</ons-list-header>
+            <ons-list-item modifier="chevron" class="listItem">
+            	{Notificaiton} {Time} {Date}
+            </ons-list-item>
+            <ons-list-item modifier="chevron" class="listItem">
+            	{Notificaiton} {Time} {Date}
+            </ons-list-item>
+            <ons-list-item modifier="chevron" class="listItem">
+            	{Notificaiton} {Time} {Date}
+            </ons-list-item>
+
+
+      </ons-list>
+      </ons-navigator>
+      </ons-row>
+
+    </ons-page>
+  </ons-template>
+  
+<!--collection.html-->
+<ons-template id="collection.html">
+    <ons-page>
+     
+
+      <ons-toolbar class="toolBar">
+        <div class="left"><ons-back-button class="backButton">Back</ons-back-button></div>
+        <div class="center">Collection</div>
+      </ons-toolbar>
+      
+      
+        	<ons-list>    
+            
+            <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('collection.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-folder" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" style="font-weight:bold;" class="collectionName"> SubCollection </p> </p>
+            </ons-list-item>
+            
+  				<ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-file-pdf-o" class="icon" fixed-width="true"></ons-icon>
+                <p id="content" class="fileName"> #1 PDF Document </p> </p>
+            </ons-list-item>
+            
+            <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-picture-o" fixed-width="true"class="icon"></ons-icon>
+                <p id="content" class="fileName"> #2 JPG Document </p> </p>
+            </ons-list-item>
+            
+                        <ons-list-item modifier="chevron" ng-click="myNavigator.pushPage('info.html', { animation : 'slide' } )">
+                <ons-icon icon="fa-file-excel-o" fixed-width="true" class="icon"></ons-icon>
+                <p id="content" class="fileName"> #3 Excel Document </p> </p>
+            </ons-list-item>
+			</ons-list>
+
+
+    </ons-page>
+  </ons-template>
