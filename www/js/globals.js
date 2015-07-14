@@ -6,7 +6,7 @@
 
 angular.module('globalsModule', [])
 
-    .factory('globals', function ($rootScope) {
+    .factory('globals', function ($rootScope, $location) {
 
         var f = {};
 
@@ -59,6 +59,12 @@ angular.module('globalsModule', [])
         f.setLoggedInIdentity = function(inputIdentity) {
             this.loggedInIdentity = inputIdentity;
         }
+
+
+        f.goHome = function () {
+            //$location.path("/home/");
+        }
+
 
         return f;
 
