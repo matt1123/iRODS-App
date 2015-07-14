@@ -11,7 +11,6 @@ angular.module('myApp', [
     'MessageCenter',
     'globalsModule',
 
-
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/home'});

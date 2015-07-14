@@ -51,4 +51,4 @@ IOS/www/
 
 node_modules
 .idea
-bower_components
+www/components
