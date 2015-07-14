@@ -5,7 +5,7 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.home',
 
-  'myApp.login',
+  'login',
     'ngRoute',
     'httpInterceptorModule',
     'MessageCenter',
@@ -18,3 +18,8 @@ config(['$routeProvider', function($routeProvider) {
 }]).config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
 }]);
+
+myApp.goHome = function() {
+  $location.path("/home/");
+}
+

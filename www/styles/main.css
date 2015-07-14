@@ -19,7 +19,7 @@ input[type=text], input[type=password] {
 .login-button {
 	width: 100%;
 	margin: 0 auto;
-	background: #F05022;
+	background: #777;
 }
 		
 .forgot-password {
@@ -71,3 +71,8 @@ input[type=text], input[type=password] {
 .listItem{
 	color:#777;	
 }
+
+
+
+
+

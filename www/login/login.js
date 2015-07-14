@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.login', ['ngRoute'])
+angular.module('login', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login', {
@@ -79,7 +79,6 @@ angular.module('myApp.login', ['ngRoute'])
                     if (!path) {
                         $log.info("hard code to go home");
                        path="/home/home";
-
                     } else {
                         // setpath
                         $log.info("setting location to last path:" + path);
@@ -95,5 +94,6 @@ angular.module('myApp.login', ['ngRoute'])
 				
 				
         };
+
 
 }]);
