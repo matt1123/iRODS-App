@@ -8,6 +8,24 @@ angular.module('home', ['ngRoute'/*, 'ngFileUpload'*/])
             controller: 'homeCtrl',
             resolve: {
 
+                // set vc name as selected
+                selectedVc: function ($route, virtualCollectionsService) {
+
+                    var vcData = virtualCollectionsService.listUserVirtualCollectionData($route.current.params.vcName);
+                    return vcData;
+                },
+                // do a listing
+                pagingAwareCollectionListing: function ($route, collectionsService) {
+                    var vcName = 'starred' //$route.current.params.vcName;
+
+                    var path = $route.current.params.path;
+                    if (path == null) {
+                        path = "";
+                    }
+
+                    return collectionsService.listCollectionContents(vcName, path, 0);
+                }
+
 
 
             }
@@ -15,15 +33,134 @@ angular.module('home', ['ngRoute'/*, 'ngFileUpload'*/])
             templateUrl: 'home/home.html',
             controller: 'homeCtrl',
             resolve: {
-              
+                // set vc name as selected
+                selectedVc: function ($route) {
+
+                    return null;
+                },
+                // do a listing
+                pagingAwareCollectionListing: function ($route, collectionsService) {
+                    return {};
+                }
 
             }
         });
     }])
 
 
+
     .controller('homeCtrl', ['$scope',  '$log', '$http', '$location', 'globals', function ($scope, $log, $http, $location, $globals, breadcrumbsService) {
 
+        $scope.listVirtualCollections = function () {
+
+            $log.info("getting starred collection");
+
+            return $http({method: 'GET', url: $globals.backendUrl('collection/Starred%20Files?offset=0&path=')}).success(function (data) {
+                $scope.collectionListing = data;
+            }).error(function () {
+                $scope.collectionListing = [];
+            });
+        };
+
+        $scope.listVirtualCollections();
+
+    }])
+
+    .factory('virtualCollectionsService', ['$http', '$log', 'globals', function ($http, $log, globals) {
+        var virtualCollections = [];
+        var virtualCollectionContents = [];
+        var selectedVirtualCollection = {};
+
+        return {
+
+
+            listUserVirtualCollections: function () {
+                $log.info("getting virtual colls");
+                return $http({method: 'GET', url: globals.backendUrl('virtualCollection')}).success(function (data) {
+                    virtualCollections = data;
+                }).error(function () {
+                    virtualCollections = [];
+                });
+            },
+
+            listUserVirtualCollectionData: function (vcName) {
+                $log.info("listing virtual collection data");
+
+                if (!vcName) {
+                    virtualCollectionContents = [];
+                    return;
+                }
+
+                return $http({
+                    method: 'GET',
+                    url: globals.backendUrl('virtualCollection/') + vcName
+                }).success(function (data) {
+                    virtualCollections = data;
+                }).error(function () {
+                    virtualCollections = [];
+                });
+
+            }
+
+        };
+
+
+    }])
+
+
+    .factory('collectionsService', ['$http', '$log', 'globals', function ($http, $log, $globals) {
+
+        var pagingAwareCollectionListing = {};
+
+        return {
+
+            selectVirtualCollection: function (vcName) {
+                //alert(vcName);
+            },
+
+            /**
+             * List the contents of a collection, based on the type of virtual collection, and any subpath
+             * @param reqVcName
+             * @param reqParentPath
+             * @param reqOffset
+             * @returns {*|Error}
+             */
+            listCollectionContents: function (reqVcName, reqParentPath, reqOffset) {
+                $log.info("doing get of the contents of a virtual collection");
+
+                if (!reqVcName) {
+                    $log.error("recVcName is missing");
+                    throw "reqMcName is missing";
+                }
+
+                if (!reqParentPath) {
+                    reqParentPath = "";
+                }
+
+                if (!reqOffset) {
+                    reqOffset = 0;
+                }
+
+                $log.info("requesting vc:" + reqVcName + " and path:" + reqParentPath);
+                return $http({
+                    method: 'GET',
+                    url: $globals.backendUrl('collection/Starred%20Files?offset=0&path='),
+                    params: {path: reqParentPath, offset: reqOffset}
+                }).success(function (response) {
+                    pagingAwareCollectionListing = response.data;
+
+                }).error(function () {
+                    pagingAwareCollectionListing = {};
+
+                });
+
+            },
+            addNewCollection: function (parentPath, childName) {
+                $log.info("addNewCollection()");
+            }
+
+
+        };
 
 
     }])

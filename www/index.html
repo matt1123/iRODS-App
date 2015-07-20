@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
-<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -18,9 +17,9 @@
 
     <!-- Custom CSS -->
     <link href="styles/main.css" rel="stylesheet">
-    <link rel="stylesheet" href="components/onsenui/build/css/onsenui.css">
+    <!--<link rel="stylesheet" href="components/onsenui/build/css/onsenui.css">-->
     <link rel="stylesheet" href="components/onsenui/build/css/onsen-css-components-blue-basic-theme.css">
-    <link rel="stylesheet" href="styles/style.css"><!--Round Button-->
+    <!--<link rel="stylesheet" href="styles/style.css"><!--Round Button-->
     <link type="text/css" rel="stylesheet" href="styles/demo.css">
     <link type="text/css" rel="stylesheet" href="styles/jquery.mmenu.all.css">
 
@@ -35,6 +34,7 @@
     <script src="components/jquery-ui/jquery-ui.js"></script>
     <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>
     <script src="components/onsenui/build/js/onsenui.js"></script>
     <script src="js/globals.js"></script>
     <script src="login/login.js"></script>
@@ -43,6 +43,8 @@
     <script src="lib/onsen/js/onsenui.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
+
+   <!-- <script type="text/javascript" src="js/button.js"></script> -->
 
 
 
@@ -54,6 +56,37 @@
         $(function() {
             $('nav#menu').mmenu();
         });
+    </script>
+
+    <script>
+        function doSearch() {
+            var searchText = document.getElementById('searchTerm').value;
+            var targetTable = document.getElementById('dataTable');
+            var targetTableColCount;
+
+            //Loop through table rows
+            for (var rowIndex = 0; rowIndex < targetTable.rows.length; rowIndex++) {
+                var rowData = '';
+
+                //Get column count from header row
+                if (rowIndex == 0) {
+                    targetTableColCount = targetTable.rows.item(rowIndex).cells.length;
+                    continue; //do not execute further code for header row.
+                }
+
+                //Process data rows. (rowIndex >= 1)
+                for (var colIndex = 0; colIndex < targetTableColCount; colIndex++) {
+                    rowData += targetTable.rows.item(rowIndex).cells.item(colIndex).textContent;
+                }
+
+                //If search term is not found in row data
+                //then hide the row, else show
+                if (rowData.indexOf(searchText) == -1)
+                    targetTable.rows.item(rowIndex).style.display = 'none';
+                else
+                    targetTable.rows.item(rowIndex).style.display = 'table-row';
+            }
+        }
     </script>
 
 
@@ -77,11 +110,14 @@
             <ul>
                 <li><a ng-click="goHome()">Home</a></li>
                 <li><a onclick="goUpload()">Upload</a></li>
-                <li><a href="#">Log Out</a></li>
+                <li><a href="#/home/">Log Out</a></li>
             </ul>
         </nav>
 
-    <div class="content">
+
+    <!--Content-->
+
+    <div class="content_page">
         <!--Where Page Will Be Injected by Angular----->
         <div ng-app="myApp">
             <!-- angular templating -->

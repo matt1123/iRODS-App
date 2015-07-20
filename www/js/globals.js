@@ -60,10 +60,15 @@ angular.module('globalsModule', [])
             this.loggedInIdentity = inputIdentity;
         }
 
-
+        /*
+         * Function to go to homepage
+         *
         f.goHome = function () {
-            //$location.path("/home/");
+           // $location.path("/home/home");
+            $window.alert("I am an alert box!");
+
         }
+        */
 
 
         return f;

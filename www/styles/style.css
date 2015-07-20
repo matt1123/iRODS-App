@@ -3,34 +3,8 @@ body { background-color:#FFFFFF;
 		text-align:center;
 		overflow-x: hidden;}
 section { align-content:center; }
-input { 
-	padding:3px; 
-	border-color:#cccccc; 
-	font-size:22px; 
-	text-align:center; 
-	border-radius:9px; 
-	border-width:2px; 
-	border-style:solid; 
-	box-shadow: 0px 0px 6px 0px rgba(42,42,42,.0); 
-	font-weight:normal; 
-	font-style:none;
- }
- button {
-	background-color:#17a288;
-	-moz-border-radius:28px;
-	-webkit-border-radius:28px;
-	border-radius:28px;
-	border:1px solid #777;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:16px;
-	padding:16px 31px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #777;
-	margin-top:12px;
- }
+
+
  
 
  wrapper {
