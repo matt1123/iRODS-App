@@ -2,6 +2,25 @@
 CHANGELOG
 ====
 
+v1.3.4
+----
+ * ons-dialog: Fixed a memory leak when using parentScope. Closes [#735](https://github.com/OnsenUI/OnsenUI/issues/735).
+ * ons-alert-dialog: Fixed a memory leak when using parentScope.
+ * ons-popover: Fixed a memory leak when using parentScope.
+
+v1.3.3
+----
+ * ons-lazy-repeat: Fixed [#678](https://github.com/OnsenUI/OnsenUI/issues/678).
+ * ons-navigator: Added `leavePage` and `enterPage` objects to prepop event.
+ * ons-sliding-menu: Fixed broken `swipe-target-width` attribute.
+ * ons-back-button: Prevent popping page twice on double tap.
+ * ons-lazy-repeat: Fix bug that caused infinite digest loops.
+ * ons-tabbar: Fix broken `persistent` attribute.
+ * ons-carousel: Fix bug where items were incorrectly cached.
+ * ons-navigator: Fix bug in `insertPage()` when pages are inserted on top.
+ * ons-scroller: Fixed [#707](https://github.com/OnsenUI/OnsenUI/issues/707).
+ * ons-carousel: Fixed a random error when event was undefined.
+
 v1.3.2
 ----
  * Fixed postchange event for carousel on IE11. Fixed [#646](https://github.com/OnsenUI/OnsenUI/issues/646).

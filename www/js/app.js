@@ -4,6 +4,9 @@
 angular.module('myApp', [
     'ngRoute',
     'home',
+    'upload',
+    'profile',
+    'subcol',
     'login',
     'ngRoute',
     'httpInterceptorModule',

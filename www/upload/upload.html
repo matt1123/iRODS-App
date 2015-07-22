@@ -1,6 +1,17 @@
-<div>
-    <form action="uploads/upload.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" style="width:275px;"><br>
-        <input type="submit" value="Upload">
-    </form>
+
+
+
+
+<div ng-controller="uploadCtrl">
+    <div class="upload_container">
+        <br>
+        Choose the file you wish to upload to the <b>starred</b> collection.<br>
+        <div class="btn btn-default btn-xs" ngf-select ngf-change="upload($files)" ngf-multiple="multiple">Browse Files</div>
+
+    </div>
+
+
+
+
+
 </div>

@@ -1,0 +1,25 @@
+<div>
+
+    <input type="text" id="searchTerm" class="search_box" placeholder="Search" onkeyup="doSearch()" />
+
+    <br>
+        <p>This is the sub collection</p>
+    <br>
+
+    <table id="dataTable" border="0" width="100%" cellspacing="0" cellpadding="5">
+
+        <tbody ng-controller="homeCtrl">
+        <tr ng-repeat="name in collectionListing.collectionAndDataObjectListingEntries">
+            <td>
+                <label id="sr" ng-click="selectProfile(name.formattedAbsolutePath)">
+                    <img ng-show="{{name.dataObject}} == true" src="home/img/Icons/data_object_icon.png">
+                    <img ng-show="{{name.dataObject}} == false" src="home/img/Icons/collection_icon.png">
+                    {{name.nodeLabelDisplayValue}}
+
+                </label>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>

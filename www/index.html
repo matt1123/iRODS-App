@@ -28,6 +28,9 @@
     <script src="components/angular/angular.min.js"></script>
     <script src="components/angular-route/angular-route.min.js"></script>
     <script src="components/angular-route/angular-route.min.js"></script>
+
+    <script src="components/ng-file-upload/ng-file-upload-all.min.js"></script>
+
     <script src="components/angular-animate/angular-animate.min.js"></script>
     <script src="components/angular-message-center/dist/message-center.min.js"></script>
     <script src="components/jquery/dist/jquery.min.js"></script>
@@ -38,7 +41,10 @@
     <script src="components/onsenui/build/js/onsenui.js"></script>
     <script src="js/globals.js"></script>
     <script src="login/login.js"></script>
+    <script src="profile/profile.js"></script>
+    <script src="upload/upload.js"></script>
     <script src="home/home.js"></script>
+    <script src="subcol/subcol.js"></script>
     <script src="js/httpInterceptors.js"></script>
     <script src="lib/onsen/js/onsenui.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -106,11 +112,11 @@
 
     <!--Menu-->
 
-        <nav id="menu">
+        <nav id="menu" ng-controller="homeCtrl">
             <ul>
                 <li><a ng-click="goHome()">Home</a></li>
-                <li><a onclick="goUpload()">Upload</a></li>
-                <li><a href="#/home/">Log Out</a></li>
+                <li><a ng-click="goUpload()">Upload</a></li>
+                <li><a href="goLog()">Log Out</a></li>
             </ul>
         </nav>
 

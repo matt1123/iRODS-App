@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('home', ['ngRoute'/*, 'ngFileUpload'*/])
+angular.module('home', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/home', {
@@ -49,7 +49,7 @@ angular.module('home', ['ngRoute'/*, 'ngFileUpload'*/])
 
 
 
-    .controller('homeCtrl', ['$scope',  '$log', '$http', '$location', 'globals', function ($scope, $log, $http, $location, $globals, breadcrumbsService) {
+    .controller('homeCtrl', ['$scope',  '$log', '$http', '$location', 'globals', function ($scope, $log, $http, $location, $globals) {
 
         $scope.listVirtualCollections = function () {
 
@@ -63,6 +63,19 @@ angular.module('home', ['ngRoute'/*, 'ngFileUpload'*/])
         };
 
         $scope.listVirtualCollections();
+
+        $scope.goHome = function(){
+            $location.path('/home/');
+        }
+
+        $scope.goLog = function(){
+            $location.path('/login/');
+        }
+
+        $scope.goUpload = function(){
+            $location.path('/upload/');
+        }
+
 
     }])
 
