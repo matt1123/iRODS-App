@@ -2,16 +2,15 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
+  'home',
+ //   'upload',
+   // 'profile',
+  //  'subcol',
+  //  'login',
     'ngRoute',
-    'home',
-    'upload',
-    'profile',
-    'subcol',
-    'login',
-    'ngRoute',
-    'httpInterceptorModule',
-    'MessageCenter',
-    'globalsModule',
+//    'httpInterceptorModule',
+//    'MessageCenter',
+    'globalsModule'
 
 ]).
     config(['$routeProvider', function ($routeProvider) {

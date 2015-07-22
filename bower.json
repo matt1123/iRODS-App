@@ -26,7 +26,8 @@
     "onsenui": ">= 1.3",
     "angular-message-center": ">= 1.0.5",
     "angular-route": "",
-    "bootstrap":""
+    "bootstrap":"",
+    "ng-file-upload": "~4.0.4"
   },
   "resolutions": {
     "angular": "~1.4.0"
