@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'home',
+<<<<<<< HEAD
     //'upload',
     'profile',
     //'subcol',
@@ -10,6 +11,15 @@ angular.module('myApp', [
     'ngRoute',
     'httpInterceptorModule',
     'MessageCenter',
+=======
+ //   'upload',
+   // 'profile',
+  //  'subcol',
+  //  'login',
+    'ngRoute',
+//    'httpInterceptorModule',
+//    'MessageCenter',
+>>>>>>> origin/master
     'globalsModule'
 
 ]).

@@ -2,10 +2,13 @@
 CHANGELOG
 ====
 
+<<<<<<< HEAD
 v1.3.6
 ----
  * ons-sliding-menu: Fixed swipeable default behaviour related to AngularJS update.
 
+=======
+>>>>>>> origin/master
 v1.3.5
 ----
  * core: Updated to AngularJS version 1.4.3.
