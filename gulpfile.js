@@ -3,6 +3,7 @@ var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var install = require("gulp-install");
+var bower = require("gulp-bower");
 
 gulp.src(['./bower.json', './package.json'])
     .pipe(install());

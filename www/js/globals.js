@@ -11,12 +11,11 @@ angular.module('globalsModule', [])
         var f = {};
 
 
-        var HOST = "http://dfc-test-tomcat1.edc.renci.org:8080/irods-cloud-backend";
-
+        //var HOST = "http://dfc-test-tomcat1.edc.renci.org:8080/irods-cloud-backend";
+        var HOST = "http://localhost:8080/irods-cloud-backend";
         f.backendUrl = function(relativeUrl) {
             return HOST + "/" + relativeUrl;
         };
-
 
         /**
          * Saved path in case an auth exception required a new login
@@ -25,8 +24,6 @@ angular.module('globalsModule', [])
         f.lastPath = null;
         f.loggedInIdentity = null;
 
-
-
         /**
          * Saved path when a not authenticated occurred
          * @param newLastPath
@@ -34,7 +31,6 @@ angular.module('globalsModule', [])
         f.setLastPath = function (newLastPath) {
             this.lastPath = newLastPath;
         };
-
 
         /**
          * Retrieve a path to re-route when a login screen was required
@@ -59,9 +55,6 @@ angular.module('globalsModule', [])
         f.setLoggedInIdentity = function(inputIdentity) {
             this.loggedInIdentity = inputIdentity;
         }
-
-
-
 
         return f;
 
