@@ -4,13 +4,14 @@
 angular.module('myApp', [
   'home',
     //'upload',
+    'ngRoute',
     'profile',
-    //'subcol',
+    'subcol',
     'login',
     'ngRoute',
     'httpInterceptorModule',
     'MessageCenter',
-    'globalsModule'
+    'globalsModule',
 
 ]).
     config(['$routeProvider', function ($routeProvider) {
