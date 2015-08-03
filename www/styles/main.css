@@ -85,12 +85,127 @@
 }
 
 .content_page{
-	padding-left:10%;
-	padding-right:10%;
-	padding-top:10%;
+	padding-top: 60px;
+	padding-left: 15px;
+	padding-right: 15px;
+	left:5%
+	transform: translate(-5%);
+}
 
+.selector {
+	position: fixed;
+	bottom: 0;
+	height: 40px;
+	left: 0;
+	width: 100%;
+	fill: #777;
+	float:bottom;
+	vertical-align: middle;
 }
 
 
+.leftButton{
+	float:left;
+	width:49%;
+	padding-left:5%;
+	padding-top:3%;
+	color: white;
+	vertical-align: middle;
+	position:absolute;
+}
+
+.rightButton{
+	float:right;
+	padding-right:5%;
+	padding-top:3%;
+	color: white;
+	vertical-align: middle;
+}
+
+.selector{
+	background-color: #777;
+	text-align: center;
+	color: white;
+}
+
+.renamer{
+	display: none;
+}
+
+.rename_container{
+	padding-top: 310px;
+}
+
+.deleter{
+	display: none;
+}
+
+.delete_container{
+	padding-top: 310px;
+}
+
+.column_content{
+	border-top:2px solid #00A9C2;
+	background: #fff;
+	padding: 5px;
+	min-height:300px;
+	height: 100%;
+	width:100%;
+}
+
+.pop_up_window{
+	position:absolute;
+	margin: 0 auto;
+	width: 100%;
+	min-height: 100vh;
+	display: none;
+	background: rgba(0,0,0,0.8);
+	z-index: 14;
+}
+
+.profileImg{
+	width: 100px;
+	float: left;
+}
+
+.profileList{
+	float: right;
+}
+
+.profileListBut{
+	list-style-type: none;
+	padding-top:270px;
+	display: inline;
+	margin: 0 auto;
+	position:fixed;
+	text-align: center;
+	padding-left:100px;
+}
+
+.profileBut{
+	display:inline;
+}
+
+.profileImg{
+	display:inline;
+	width:55px;
+	padding-left:7px;
+	padding-right:7px;
+}
+
+.profileDets{
+	position: fixed;
+	float: top;
+	margin: 0 auto;
+}
+
+.profileTitle{
+	float: top;
+	left:50%;
+}
+
+.renameList{
+	list-style-type: none;
+}
 
 

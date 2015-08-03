@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en" ng-app="myApp">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Mobile App</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>iRODS Mobile</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="components/angular-message-center/message-center.css">
-
-
 
     <link rel="stylesheet" href="styles/app.css">
     <!-- Bootstrap Core CSS -->
@@ -16,37 +17,100 @@
 
     <!-- Custom CSS -->
     <link href="styles/main.css" rel="stylesheet">
-    <link rel="stylesheet" href="components/onsenui/build/css/onsenui.css">
-    <link rel="stylesheet" href="components/onsenui/build/css/onsen-css-components-blue-basic-theme.css">
+    <link type="text/css" rel="stylesheet" href="styles/demo.css">
+    <link type="text/css" rel="stylesheet" href="styles/jquery.mmenu.all.css">
+
+    <script src="components/angular/angular.min.js"></script>
+    <script src="components/angular-route/angular-route.min.js"></script>
+    <script src="components/angular-animate/angular-animate.min.js"></script>
+    <script src="components/angular-message-center/dist/message-center.min.js"></script>
+    <script src="components/jquery/dist/jquery.min.js"></script>
+    <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="components/ng-file-upload/ng-file-upload-all.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/globals.js"></script>
+    <script src="login/login.js"></script>
+    <script src="home/home.js"></script>
+    <script src="upload/upload.js"></script>
+    <script src="js/httpInterceptors.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
+
+
+
+    <!--Custom JS-->
+
+
+    <script type="text/javascript">
+        $(function() {
+            $('nav#menu').mmenu();
+        });
+    </script>
+
+    <script>
+        function doSearch() {
+            var searchText = document.getElementById('searchTerm').value;
+            var targetTable = document.getElementById('dataTable');
+            var targetTableColCount;
+
+            //Loop through table rows
+            for (var rowIndex = 0; rowIndex < targetTable.rows.length; rowIndex++) {
+                var rowData = '';
+
+                //Get column count from header row
+                if (rowIndex == 0) {
+                    targetTableColCount = targetTable.rows.item(rowIndex).cells.length;
+                    continue; //do not execute further code for header row.
+                }
+
+                //Process data rows. (rowIndex >= 1)
+                for (var colIndex = 0; colIndex < targetTableColCount; colIndex++) {
+                    rowData += targetTable.rows.item(rowIndex).cells.item(colIndex).textContent;
+                }
+
+                //If search term is not found in row data
+                //then hide the row, else show
+                if (rowData.indexOf(searchText) == -1)
+                    targetTable.rows.item(rowIndex).style.display = 'none';
+                else
+                    targetTable.rows.item(rowIndex).style.display = 'table-row';
+            }
+        }
+    </script>
 </head>
+
+
+
 <body>
+<div id="page">
+    <div class="header">
+        <a href="#menu"></a>
+        Mobile App
+    </div>
 
-<div></div>
-<!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
-<div ng-app="myApp">
+    <!--Menu-->
 
-    <!-- angular templating -->
-    <!-- this is where content will be injected -->
-    <div ng-view class="main_wrapper"></div>
+        <nav id="menu" ng-controller="homeCtrl">
+            <ul>
+                <li><a ng-click="goHome()">Home</a></li>
+                <li><a ng-click="goUpload()">Upload</a></li>
+                <li><a href="">Log Out</a></li>
+            </ul>
+        </nav>
+
+
+    <!--Content-->
+
+    <div class="content_page">
+        <!--Where Page Will Be Injected by Angular----->
+        <div ng-app="myApp">
+            <!-- angular templating -->
+            <!-- this is where content will be injected -->
+            <div ng-view class="main_wrapper"></div>
+        </div>
+    </div>
+
 </div>
-
-<script src="components/angular/angular.min.js"></script>
-<script src="components/angular-route/angular-route.min.js"></script>
-<script src="components/angular-route/angular-route.min.js"></script>
-<script src="components/angular-animate/angular-animate.min.js"></script>
-<script src="components/angular-message-center/dist/message-center.min.js"></script>
-<script src="components/jquery/dist/jquery.min.js"></script>
-<script src="components/jquery-ui/jquery-ui.js"></script>
-<script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="js/app.js"></script>
-<script src="components/onsenui/build/js/onsenui.js"></script>
-<script src="js/globals.js"></script>
-<script src="login/login.js"></script>
-<script src="js/httpInterceptors.js"></script>
-
-
 </body>
 </html>

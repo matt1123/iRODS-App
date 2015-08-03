@@ -1,34 +1,41 @@
 @charset "UTF-8";
 /* CSS Document */
 
-<!---Login Page-->
+
 .login-form {
 	text-align: center;
 	width: 80%;
 	margin: 60px auto 0;
 }
-		
-input[type=text], input[type=password] {
+
+.login-input {
 	width: 100%;
 	margin: 0 auto;
 	outline: none;
 	padding-top: 24px;
-	padding-bottom: 24px;
+	padding-bottom: none;
+	border-left:none;
+	border-right:none;
+	border-top:none;
 }
 
-.login-button {
-	width: 100%;
-	margin: 0 auto;
-	background: #F05022;
+.login-button{
+	background-color:transparent;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:2px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-size:17px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
 }
-		
-.forgot-password {
-	display: block;
-	margin: 8px auto 0 auto;
-	font-size: 14px;
-	color:#F05022;
+.login-button:hover {
+	color:#777;
 }
-
 .menuButton{
 	color:#FFF;
 }
@@ -69,5 +76,21 @@ input[type=text], input[type=password] {
 }
 
 .listItem{
-	color:#777;	
+	color:#777;
 }
+
+.search_box{
+	width:100%;
+	radius:10%
+}
+
+.content_page{
+	padding-left:10%;
+	padding-right:10%;
+	padding-top:10%;
+
+}
+
+
+
+

@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
 
-    <title>Mobile App</title>
+    <title>iRODS Mobile</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="components/angular-message-center/message-center.css">
@@ -17,51 +17,44 @@
 
     <!-- Custom CSS -->
     <link href="styles/main.css" rel="stylesheet">
-    <!--<link rel="stylesheet" href="components/onsenui/build/css/onsenui.css">-->
-    <link rel="stylesheet" href="components/onsenui/build/css/onsen-css-components-blue-basic-theme.css">
-    <!--<link rel="stylesheet" href="styles/style.css"><!--Round Button-->
     <link type="text/css" rel="stylesheet" href="styles/demo.css">
     <link type="text/css" rel="stylesheet" href="styles/jquery.mmenu.all.css">
 
-
-
     <script src="components/angular/angular.min.js"></script>
     <script src="components/angular-route/angular-route.min.js"></script>
-    <script src="components/angular-route/angular-route.min.js"></script>
-
-    <script src="components/ng-file-upload/ng-file-upload-all.min.js"></script>
-
     <script src="components/angular-animate/angular-animate.min.js"></script>
     <script src="components/angular-message-center/dist/message-center.min.js"></script>
     <script src="components/jquery/dist/jquery.min.js"></script>
-    <script src="components/jquery-ui/jquery-ui.js"></script>
     <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="components/ng-file-upload/ng-file-upload-all.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="components/onsenui/build/js/onsenui.js"></script>
     <script src="js/globals.js"></script>
     <script src="login/login.js"></script>
-    <script src="profile/profile.js"></script>
-    <script src="upload/upload.js"></script>
     <script src="home/home.js"></script>
-    <script src="subcol/subcol.js"></script>
+    <script src="upload/upload.js"></script>
+
+    <script src="profile/profile.js"></script>
+    <script src="home/fileServices.js"></script>
+    <script src="subCol/subCol.js"></script>
+
     <script src="js/httpInterceptors.js"></script>
-    <script src="lib/onsen/js/onsenui.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
 
-   <!-- <script type="text/javascript" src="js/button.js"></script> -->
 
-
-
-    <script>
-        var module = angular.module('app', ['onsen']);
-    </script>
+    <!--Custom JS-->
 
     <script type="text/javascript">
         $(function() {
             $('nav#menu').mmenu();
         });
+    </script>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
     </script>
 
     <script>
@@ -94,20 +87,16 @@
             }
         }
     </script>
-
-
-
-
-
 </head>
 
 
 
 <body>
 <div id="page">
-    <div class="header">
+    <div class="header" ng-controller="homeCtrl">
         <a href="#menu"></a>
-        Mobile App
+        <!--Mobile App-->
+        {{appTitle}}
     </div>
 
     <!--Menu-->
@@ -116,7 +105,7 @@
             <ul>
                 <li><a ng-click="goHome()">Home</a></li>
                 <li><a ng-click="goUpload()">Upload</a></li>
-                <li><a href="goLog()">Log Out</a></li>
+                <li><a href="">Log Out</a></li>
             </ul>
         </nav>
 

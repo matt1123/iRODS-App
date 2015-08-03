@@ -1,25 +1,42 @@
 <div>
 
-    <input type="text" id="searchTerm" class="search_box" placeholder="Search" onkeyup="doSearch()" />
+    <div class="selector">
+        <div class="leftButton" onclick="goBack()">Back</div>
+        <div class="rightButton" ng-click="selectProfile(collectionListing.pagingAwareCollectionListingDescriptor.parentAbsolutePath)">Collection Profile</div>
+    </div>
+
+
+
+
+
+
+<input type="text" id="searchTerm" class="search_box" placeholder="Search" onkeyup="doSearch()" />
 
     <br>
-        <p>This is the sub collection</p>
     <br>
 
     <table id="dataTable" border="0" width="100%" cellspacing="0" cellpadding="5">
 
-        <tbody ng-controller="homeCtrl">
+        <tbody ng-controller="subColCtrl">
         <tr ng-repeat="name in collectionListing.collectionAndDataObjectListingEntries">
             <td>
-                <label id="sr" ng-click="selectProfile(name.formattedAbsolutePath)">
+                <label id="sr">
                     <img ng-show="{{name.dataObject}} == true" src="home/img/Icons/data_object_icon.png">
                     <img ng-show="{{name.dataObject}} == false" src="home/img/Icons/collection_icon.png">
-                    {{name.nodeLabelDisplayValue}}
+
+                        <span class="collection_object" ng-show="{{name.dataObject}} == false" ng-click="goSubCollection(name.nodeLabelDisplayValue,name.formattedAbsolutePath)">
+                                {{name.nodeLabelDisplayValue}}
+                        </span>
+                        <span class="data_object" ng-show="{{name.dataObject}} == true" ng-click="selectProfile(name.formattedAbsolutePath)">
+                                {{name.nodeLabelDisplayValue}}
+                        </span>
 
                 </label>
             </td>
         </tr>
         </tbody>
     </table>
+
+
 
 </div>

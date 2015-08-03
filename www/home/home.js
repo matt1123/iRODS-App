@@ -49,9 +49,11 @@ angular.module('home', ['ngRoute'])
 
 
 
-    .controller('homeCtrl', ['$scope',  '$log', '$http', '$location', 'globals', function ($scope, $log, $http, $location, $globals) {
+    .controller('homeCtrl', ['$scope',  '$log', '$http', '$location', 'globals', 'virtualCollectionsService', function ($scope, $log, $http, $location, $globals, $virtualCollectionsService) {
 
-        $scope.listVirtualCollections = function () {
+
+
+        $scope.listVirtualCollections = function (irods) {
 
             $log.info("getting starred collection");
 
@@ -61,6 +63,22 @@ angular.module('home', ['ngRoute'])
                 $scope.collectionListing = [];
             });
         };
+
+        $scope.goSubCollection = function(vcName, path) {
+
+
+            $log.info("Going to subcollection " + vcName);
+            $log.info("at path: " + path);
+
+            $location.url("/subCol/");
+            $location.search("path", path);
+
+
+
+
+
+
+        }
 
         $scope.listVirtualCollections();
 
@@ -72,9 +90,83 @@ angular.module('home', ['ngRoute'])
             $location.path('/login/');
         }
 
-        $scope.goUpload = function(){
+        $scope.goUpload = function() {
             $location.path('/upload/');
         }
+
+
+
+        $scope.selectProfile = function (irodsAbsolutePath) {
+            $log.info("going to Data Profile");
+            if (!irodsAbsolutePath) {
+                $log.error("missing irodsAbsolutePath")
+                MessageService.danger("missing irodsAbsolutePath");
+            }
+
+
+            $location.url("/profile/");
+            $location.search("path", irodsAbsolutePath);
+
+        }
+
+        $scope.appTitle = "Mobile App";
+
+        //File Actions
+        $scope.getDownloadLink = function() {
+            return  $globals.backendUrl('download') + "?path=" + $scope.dataProfile.domainObject.absolutePath;
+
+        };
+
+        $scope.delete_pop_up_open = function(){
+            $('.renamer').fadeOut(100);
+            $('.pop_up_window').fadeIn(100);
+            $(".delete_container ul").append('<li class="light_back_option_even"><div class="col-xs-7 list_content"><img src="home/img/Icons/data_object_icon.png">'+$scope.dataProfile.childName+'</div></li>');
+            $('.deleter').fadeIn(100);
+        };
+
+        $scope.pop_up_close = function () {
+            $('.pop_up_window').fadeOut(100);
+            $('.deleter').fadeOut(100);
+            $('.renamer').fadeOut(100);
+        };
+
+        $scope.delete_action = function (){
+            var delete_paths = 'path='+ $scope.dataProfile.parentPath + "/" +$scope.dataProfile.childName;
+            $log.info('Deleting:'+delete_paths);
+            return $http({
+                method: 'DELETE',
+                url: $globals.backendUrl('file') + '?' + delete_paths
+            }).success(function (data) {
+                alert('Deletion completed');
+                window.history.go(-1);
+            })
+        };
+
+        $scope.rename_pop_up_open = function() {
+            $('.deleter').fadeOut(100);
+            $('.pop_up_window').fadeIn(100);
+            $('.renamer').fadeIn(100);
+            var name_of_selection = $('.ui-selected').children('.list_content').children('.data_object').text();
+            $('.selected_object').append(name_of_selection);
+        };
+
+        $scope.rename_action = function (){
+            var rename_path = $scope.dataProfile.parentPath + "/" + $scope.dataProfile.childName;
+            var new_name = $('#new_renaming_name').val();
+            var old_url = window.location;
+            var n = String(old_url).lastIndexOf("%2F");
+            var new_url = String(old_url).substr(0,n);
+            var new_url = new_url + "%2F" + new_name;
+            $log.info('Renaming:'+rename_path);
+            return $http({
+                method: 'PUT',
+                url: $globals.backendUrl('rename'),
+                params: {path: rename_path, newName: new_name}
+            }).success(function (data) {
+                location.assign(new_url);
+            })
+        };
+
 
 
     }])

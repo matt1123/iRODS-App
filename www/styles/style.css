@@ -1,4 +1,4 @@
-header { background-color: #17a288; }
+/*header { background-color: #17a288; }*/
 body { background-color:#FFFFFF; 
 		text-align:center;
 		overflow-x: hidden;}
@@ -7,7 +7,7 @@ section { align-content:center; }
 
  
 
- wrapper {
+ .wrapper {
 	 padding:10px;
 	 background-color:#0FF
  }
@@ -17,20 +17,15 @@ section { align-content:center; }
   overflow-y: scroll;
   overflow-x:hidden;
 }
-core-header-panel {
+.core-header-panel {
   background: white;
 }
-core-toolbar {
+.core-toolbar {
   background-color: #17a288;
 }
 
 
-<!--p {
-<!--  margin: 20px;
-<!--  padding: 80px 20px;
-<!--  border-radius: 20px;
-<!--  background-color: #eee;
-<!--}
+
 
 
 button {
@@ -102,11 +97,12 @@ body { font-family: Tahoma, Geneva, sans-serif}
 /*a { text-decoration: none; color: #099 }*/
 li {list-style-type: none; }
 
-header { width: 100%; 
-		height: auto; 
-		margin:auto 
-		border-bottom:1px solid #EEE
-}
+/*header { width: 100%; */
+		/*height: auto; */
+		/*margin:auto */
+		/*border-bottom:1px solid #EEE*/
+/*}*/
+
 #brand {
 	float: left;
 	line-height: 50px;
@@ -122,7 +118,7 @@ nav a {
 	color:#FFF;
 	text-decoration:none;
 }
-nave a:hover { background: #000000; color:#FFFCFCS; }
+.nave a:hover { background: #000000; }
 nav li:last-child a { border-bottom: none; }
 /*-----------------*/
 .menu {
@@ -163,7 +159,6 @@ nav li:last-child a { border-bottom: none; }
 .ui-loader { display: none; position: absolute; opacity: .85; z-index: 100; left: 50%; width: 200px; margin-left: -130px; margin-top: -35px; padding: 10px 30px; }
 
 
-<!-- Document List 
 #icon-container {
     width: 100%;
     height: 100%;
@@ -176,14 +171,6 @@ nav li:last-child a { border-bottom: none; }
 	margin-top:25px;
 }
 
-<!-- Document Menu
-
-
- 
- 
 #infoToggle{display:none;}
  
 #infoToggle:checked ~ .infoMenu{ position:absolute; right:00;}
-
-
-

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.login', ['ngRoute'])
+angular.module('login', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login', {
@@ -64,7 +64,7 @@ angular.module('myApp.login', ['ngRoute'])
             $log.info("irodsAccount for host:" + actval);
             $http({
                 method: 'POST',
-                url: $globals.backendUrl('login'),
+                url: $globals.backendUrl('login/'),
                 data: actval,
                 headers: { 'Content-Type': 'application/json' }  // set the headers so angular passing info as request payload
             }).then(function (data) {
@@ -94,5 +94,6 @@ angular.module('myApp.login', ['ngRoute'])
 				
 				
         };
+
 
 }]);

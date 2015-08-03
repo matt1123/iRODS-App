@@ -6,12 +6,12 @@
 
 angular.module('globalsModule', [])
 
-    .factory('globals', function ($rootScope) {
+    .factory('globals', function ($rootScope, $location) {
 
         var f = {};
 
 
-        var HOST = "http://localhost:8080/irods-cloud-backend";
+        var HOST = "http://dfc-test-tomcat1.edc.renci.org:8080/irods-cloud-backend";
 
         f.backendUrl = function(relativeUrl) {
             return HOST + "/" + relativeUrl;
@@ -59,6 +59,17 @@ angular.module('globalsModule', [])
         f.setLoggedInIdentity = function(inputIdentity) {
             this.loggedInIdentity = inputIdentity;
         }
+
+        /*
+         * Function to go to homepage
+         *
+        f.goHome = function () {
+           // $location.path("/home/home");
+            $window.alert("I am an alert box!");
+
+        }
+        */
+
 
         return f;
 
