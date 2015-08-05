@@ -81,7 +81,8 @@
 
 .search_box{
 	width:100%;
-	radius:10%
+	radius:10%;
+	/*border: #777;*/
 }
 
 .content_page{
@@ -98,9 +99,10 @@
 	height: 40px;
 	left: 0;
 	width: 100%;
-	fill: #777;
+	fill: #009fab;
 	float:bottom;
 	vertical-align: middle;
+	background-color: #009fab;
 }
 
 
@@ -126,6 +128,7 @@
 	background-color: #777;
 	text-align: center;
 	color: white;
+	background-color: #009fab;
 }
 
 .renamer{
@@ -179,7 +182,7 @@
 	margin: 0 auto;
 	position:fixed;
 	text-align: center;
-	padding-left:100px;
+	padding-left:90px;
 }
 
 .profileBut{
@@ -188,7 +191,7 @@
 
 .profileImg{
 	display:inline;
-	width:55px;
+	width:60px;
 	padding-left:7px;
 	padding-right:7px;
 }
@@ -208,4 +211,15 @@
 	list-style-type: none;
 }
 
+/*-------------------------*/
+
+.sr{
+	font-size: 16px;
+}
+
+.sd{
+	padding-top: 6px;
+	padding-bottom: 6px;
+	border-bottom: thin;
+}
 
