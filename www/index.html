@@ -59,7 +59,8 @@
 
     <script>
         function doSearch() {
-            var searchText = document.getElementById('searchTerm').value;
+            //Get the input value as lower case
+            var searchText = document.getElementById('searchTerm').value.toUpperCase();
             var targetTable = document.getElementById('dataTable');
             var targetTableColCount;
 
@@ -78,15 +79,18 @@
                     rowData += targetTable.rows.item(rowIndex).cells.item(colIndex).textContent;
                 }
 
-                //If search term is not found in row data
+                //If search term (upper case) is not found in row data
                 //then hide the row, else show
-                if (rowData.indexOf(searchText) == -1)
+                if (rowData.toUpperCase().indexOf(searchText) == -1)
                     targetTable.rows.item(rowIndex).style.display = 'none';
                 else
                     targetTable.rows.item(rowIndex).style.display = 'table-row';
             }
         }
     </script>
+
+
+
 </head>
 
 
@@ -94,9 +98,9 @@
 <body>
 <div id="page">
     <div class="header" class="menuBars" ng-controller="homeCtrl">
-        <a href="#menu" ng-hide="showMenu()"></a>
+        <a class="appTitle" href="#menu" ng-hide="showMenu()"></a>
         <!--Mobile App-->
-        {{appTitle}}
+        <p class="appTitle">{{appTitle}}</p>
     </div>
 
     <!--Menu-->

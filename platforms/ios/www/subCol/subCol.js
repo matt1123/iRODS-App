@@ -52,9 +52,7 @@ angular.module('subCol', ['ngRoute'])
         $scope.listVirtualCollections = function () {
 
             var url = $location.url();
-            $log.info("The old URL is: " + url);
             url = url.substring(8);
-            $log.info("The new URL is: " + url);
 
             return $http({method: 'GET', url: $globals.backendUrl("collection/Starred%20Files?offset=0&" + url)}).success(function (data) {
                 $scope.collectionListing = data;

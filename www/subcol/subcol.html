@@ -16,6 +16,9 @@
     <br>
 
     <table id="dataTable" border="0" width="100%" cellspacing="0" cellpadding="5">
+        <thead>
+            <th ng-hide="true==true">Hidden</th>
+        </thead>
 
         <tbody ng-controller="subColCtrl">
         <tr ng-repeat="name in collectionListing.collectionAndDataObjectListingEntries">

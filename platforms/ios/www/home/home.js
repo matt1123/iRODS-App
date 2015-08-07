@@ -186,7 +186,10 @@ angular.module('home', ['ngRoute'])
                 params: {path: rename_path, newName: new_name}
             }).success(function (data) {
                 location.assign(new_url);
+                window.history.go(-2);
+
             })
+
         };
 
 
