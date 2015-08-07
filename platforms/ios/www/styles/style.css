@@ -21,7 +21,7 @@ section { align-content:center; }
   background: white;
 }
 .core-toolbar {
-  background-color: #17a288;
+  background-color: #1aa9c0;
 }
 
 
@@ -29,7 +29,7 @@ section { align-content:center; }
 
 
 button {
-	background-color:#17a288;
+	background-color:#1aa9c0;
 	-moz-border-radius:28px;
 	-webkit-border-radius:28px;
 	border-radius:28px;
@@ -50,7 +50,7 @@ button {
 	height: 100%;
 	left: -200px;
 	position: absolute;
-	background:#17a288;
+	background:#1aa9c0;
 	opacity:.98;
 	
 	
@@ -126,7 +126,7 @@ nav li:last-child a { border-bottom: none; }
 	height: 100%;
 	left: -200px;
 	position: absolute;
-	background:#17a288;
+	background:#1aa9c0;
 	
 	
 	transition: all .3s ease-in-out;
@@ -140,7 +140,7 @@ nav li:last-child a { border-bottom: none; }
 
 .menu-icon {
 	padding: 10px 20px;
-	background:#17a288;
+	background:#1aa9c0;
 	color: #FFF;
 	cursor: pointer;
 	float: left;

@@ -99,10 +99,10 @@
 	height: 40px;
 	left: 0;
 	width: 100%;
-	fill: #009fab;
+	fill: #1aa9c0;
 	float:bottom;
 	vertical-align: middle;
-	background-color: #009fab;
+	background-color: #1aa9c0;
 }
 
 
@@ -128,7 +128,7 @@
 	background-color: #777;
 	text-align: center;
 	color: white;
-	background-color: #009fab;
+	background-color: #1aa9c0;
 }
 
 .renamer{
@@ -148,7 +148,7 @@
 }
 
 .column_content{
-	border-top:2px solid #00A9C2;
+	border-top:2px solid #1aa9c0;
 	background: #fff;
 	padding: 5px;
 	min-height:300px;
