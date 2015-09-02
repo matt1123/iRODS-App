@@ -64,19 +64,26 @@ angular.module('home', ['ngRoute'])
             });
         };
 
-        $scope.goSubCollection = function(vcName, path) {
+        $scope.appTitle = function(title){
+            $log.info("New title should be " + title);
+            var url = $location.url();
+            url = url.substring(0,5);
+            if(url == '/logi'){
+                return "Mobile App"
+            }else if(url == '/home'){
+                return "Starred Collection"
+            }else{
+                return title;
+            }
+        }
 
+        $scope.goSubCollection = function(vcName, path) {
 
             $log.info("Going to subcollection " + vcName);
             $log.info("at path: " + path);
 
             $location.url("/subCol/");
             $location.search("path", path);
-
-
-
-
-
 
         }
 
@@ -130,8 +137,6 @@ angular.module('home', ['ngRoute'])
             $location.search("path", irodsAbsolutePath);
 
         }
-
-        $scope.appTitle = "Mobile App";
 
         //File Actions
         $scope.getDownloadLink = function() {
