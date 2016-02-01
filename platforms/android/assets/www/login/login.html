@@ -5,6 +5,7 @@
 	text-align: center;
 	width: 80%;
 	margin: 60px auto 0;
+	transform: translate(0,-100px);
 }
 		
 input[type=text], input[type=password] {
@@ -40,14 +41,16 @@ select {
   </style>
 
 
+
 	  <div class="login-form" align="center" ng-controller="loginCtrl">
-        <ons-page>
-            
-        <ons-toolbar class="toolBar">
-            <div class="left">
-            </div>
-            <div class="center">Log In Header</div>
-        </ons-toolbar>
+		  <br>
+		  <br>
+		  <br>
+        <!--<ons-toolbar class="toolBar">-->
+            <!--<div class="left">-->
+            <!--</div>-->
+            <!--<div class="center">Log In Header</div>-->
+        <!--</ons-toolbar>-->
 
             <input type="text" class="text-input--underbar" placeholder="Host" ng-model="login.host" required>
             <input type="text" class="text-input--underbar" placeholder="Port" ng-model="login.port" required>
@@ -63,7 +66,7 @@ select {
             <br>
 			<br>
             <button modifier="large" class="login-button" ng-click="submitLogin()" prevent-default>Log In</button>
-        </ons-page>
+
         
       </div>
       

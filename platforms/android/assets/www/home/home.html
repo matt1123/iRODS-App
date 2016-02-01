@@ -1,39 +1,89 @@
 <div>
 
-    <div class="selector" ng-controller="homeCtrl">
+    <div style="position: fixed;left: 50%;transform: translate(-50%, -120%);" ng-controller="subColCtrl">
+
+        <!--<button class="mui-btn" data-mui-style="raised" data-mui-color="primary">-->
+            <!--<img src="icons/search.png" style="width: 15px; height: 15px;;">-->
+        <!--</button>-->
+
+        <button class="mui-btn mui-btn--flat mui-btn--primary" data-mui-color="primary"
+                ng-click="selectProfile(collectionListingInSubcol.pagingAwareCollectionListingDescriptor.parentAbsolutePath)"
+                style="transform: translate(0,-50px)">
+            Starred Collection
+        </button>
 
     </div>
 
+    <div style="transform: translateY(-30px);">
+        <input type="text" id="searchTerm" placeholder="Search the starred collection"
+               class="search_box" onkeyup="doSearch()" />
+        <table id="dataTable" border="0" width="100%" cellspacing="0" cellpadding="5" class="mui-table" data-mui-borders="true">
+            <thead>
+                <th ng-hide="true==true">Hidden</th>
+            </thead>
 
-    <br>
-
-    <input type="text" id="searchTerm" class="search_box" placeholder="Search your starred collection" onkeyup="doSearch()" />
-
-    <br>
-    <br>
-
-
-    <table id="dataTable" border="0" width="100%" cellspacing="0" cellpadding="5">
-
-        <tbody ng-controller="homeCtrl">
-        <tr ng-repeat="name in collectionListing.collectionAndDataObjectListingEntries">
-            <td class="sd">
-                <label class="sr">
-                    <img ng-show="{{name.dataObject}} == true" src="home/img/Icons/data_object_icon.png">
-                    <img ng-show="{{name.dataObject}} == false" src="home/img/Icons/collection_icon.png">
-
-                        <span class="collection_object" ng-show="{{name.dataObject}} == false" ng-click="goSubCollection(name.nodeLabelDisplayValue,name.formattedAbsolutePath)">
-                                {{name.nodeLabelDisplayValue}}
-                        </span>
+            <tbody ng-controller="homeCtrl">
+            <tr ng-repeat="name in collectionListingDropdown.collectionAndDataObjectListingEntries">
+                <!-- Data Objects -->
+                <td class="sd" ng-show="{{name.dataObject}} == true" ng-click="selectProfile(name.formattedAbsolutePath)">
+                    <div>
+                        <img ng-show="{{name.dataObject}} == true" src="icons/data_object_icon.png">
                         <span class="data_object" ng-show="{{name.dataObject}} == true" ng-click="selectProfile(name.formattedAbsolutePath)">
-                                {{name.nodeLabelDisplayValue}}
+                            <button class="mui-btn" data-mui-style="flat" data-mui-color="primary">{{name.nodeLabelDisplayValue}}</button>
+                            <div style="float: right; margin-top:15px;">
+                                &#10095;
+                            </div>
+                        </span>
+                    </div>
+                </td>
+
+                <!-- Collections -->
+                <td class="sd" ng-show="{{name.dataObject}} == false" ng-click="goSubCollection(name.nodeLabelDisplayValue,name.formattedAbsolutePath)">
+                    <div>
+                        <img ng-show="{{name.dataObject}} == false" src="icons/collection_icon.png">
+                        <span class="collection_object" ng-show="{{name.dataObject}} == false" ng-click="goSubCollection(name.nodeLabelDisplayValue,name.formattedAbsolutePath)">
+                            <button class="mui-btn" data-mui-style="flat" data-mui-color="primary">{{name.nodeLabelDisplayValue}}</button>
+                            <div style="float: right; margin-top:15px;">
+                                &#10095;
+                            </div>
                         </span>
 
-                </label>
-            </td>
-        </tr>
-        </tbody>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
     </table>
+    </div>
+
+
+
+
+
+
+    <div class="pop_up_window" ng-controller="subColCtrl">
+        <div class="upload_container">
+            Choose the files you wish to upload to <b>this</b> collection.
+            <div class="btn btn-default btn-xs" ngf-select ngf-change="stage_files($files)" ngf-multiple="multiple">Browse Files</div>
+        </div>
+
+        <!--<div class="three_column centered">-->
+            <!--<div class="column_content uploader pop_up_content">-->
+                <!--<div class="upload_container">-->
+                    <!--<br>-->
+                    <!--Choose the file(s) you wish to upload to <b>THIS</b> collection.<br>-->
+                <!--</div>-->
+                <div class="upload_container_result">
+
+                    <div class="container"><hr class="hr_flat"></div>
+                    <div class="right container t_right">
+                        <div class="btn btn-success" ng-click="upload($files)">Done</div>
+                        <div class="btn btn-default" ng-click="pop_up_close()">Cancel</div>
+                    </div>
+
+                </div>
+            <!--</div>-->
+        <!--</div>-->
+    </div>
 
 
 

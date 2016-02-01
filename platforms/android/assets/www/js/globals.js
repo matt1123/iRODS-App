@@ -13,6 +13,8 @@ angular.module('globalsModule', [])
 
         var HOST = "http://dfc-test-tomcat1.edc.renci.org:8080/irods-cloud-backend";
 
+        //"http://dfc-test-tomcat1.edc.renci.org:8080/irods-cloud-backend";
+
         f.backendUrl = function(relativeUrl) {
             return HOST + "/" + relativeUrl;
         };

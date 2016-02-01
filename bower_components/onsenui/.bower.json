@@ -48,14 +48,14 @@
     "build/js/angular",
     "release.sh"
   ],
-  "version": "1.3.7",
-  "_release": "1.3.7",
+  "version": "1.3.14",
+  "_release": "1.3.14",
   "_resolution": {
     "type": "version",
-    "tag": "1.3.7",
-    "commit": "79806eeae99471a3b01ebd952caf078cf9a71794"
+    "tag": "1.3.14",
+    "commit": "013635a208d45f6b9c2e43b98a0750b759f72bac"
   },
-  "_source": "git://github.com/OnsenUI/OnsenUI.git",
+  "_source": "git://github.com/OnsenUI/OnsenUI-dist.git",
   "_target": ">= 1.3",
   "_originalSource": "onsenui"
 }

@@ -1,21 +1,34 @@
-<!-- <div ng-controller="uploadCtrl">
-    <div class="upload_container">
-        <br>
-        Choose the file you wish to upload to the <b>starred</b> collection.<br>
-        <div class="btn btn-default btn-xs" ngf-select ngf-change="upload($files)" ngf-multiple="multiple">Browse Files</div>
-
-    </div>
-</div> -->
-
-
 <div ng-controller="uploadCtrl">
+
+
+
     <div class="upload_container">
         <br>
         Choose the file you wish to upload to the <b>starred</b> collection.<br>
-        <div class="btn btn-default btn-xs" ngf-select ngf-change="upload($files)" ngf-multiple="multiple">Browse Files</div>
+        <input type="file" ngf-select="onFileSelect($files)" multiple>
+        <br>
     </div>
 
 
+
+    <p><b>BREAK</b></p>
+
+    <div class="upload_container">
+        <br>
+        Choose the file(s) you wish to upload to <b>THIS</b> collection.<br>
+        <div class="btn btn-default btn-xs" ngf-select ngf-change="stage_files($files)" ngf-multiple="multiple">Browse Files</div>
+    </div>
+
+
+
+    <div class="upload_container_result">
+        <ul></ul>
+        <div class="container"><hr class="hr_flat"></div>
+        <div class="right container t_right">
+            <div class="btn btn-success" ng-click="upload($files)">Done</div>
+        </div>
+        <div class="container"><hr class="hr_flat"></div>
+    </div>
 
 
 

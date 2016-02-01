@@ -2,6 +2,45 @@
 CHANGELOG
 ====
 
+v1.3.14
+----
+* ons-tabbar: Fixed [#963](https://github.com/OnsenUI/OnsenUI/issues/963).
+
+v1.3.13
+----
+* ons-carousel: Fixed [#929](https://github.com/OnsenUI/OnsenUI/issues/929).
+* dependencies: Fixed [#936](https://github.com/OnsenUI/OnsenUI/issues/936).
+* ons-lazy-repeat: Fixed [#966](https://github.com/OnsenUI/OnsenUI/issues/966).
+* ons-sliding-menu: Fixed [#967](https://github.com/OnsenUI/OnsenUI/issues/967).
+* ons-pull-hook: Fixed [#969](https://github.com/OnsenUI/OnsenUI/issues/969).
+* ons-navigator: Fixed [#1018](https://github.com/OnsenUI/OnsenUI/issues/1018).
+
+v1.3.12
+----
+* ons-page: Fix status bar fill for iOS9.
+
+v1.3.11
+----
+* ons-tabbar: Remove flickering when navigator is a child of tabbar.
+* ons-dialog: Fixed broken `mask-color` attribute.
+
+v1.3.10
+----
+* ons-tabbar: Fixed [#891](https://github.com/OnsenUI/OnsenUI/issues/891).
+
+v1.3.9
+----
+* ons-carousel: Fixed [#844](https://github.com/OnsenUI/OnsenUI/issues/844).
+* ons-navigator: Fixed [#865](https://github.com/OnsenUI/OnsenUI/issues/865).
+* core: Fixed [#845](https://github.com/OnsenUI/OnsenUI/issues/845).
+* ons-lazy-repeat: Added debouncing to increase performance on iOS.
+* core: FastClick patched to support setting the system clock back.
+
+v1.3.8
+----
+* ons-lazy-repeat: Recalculate heights when number of items change in order to support dynamic lists with variable height items.
+* ons-lazy-repeat: Don't wait to render to make the list more responsive.
+
 v1.3.7
 ----
 * core: Fixed [#632](https://github.com/OnsenUI/OnsenUI/issues/632).

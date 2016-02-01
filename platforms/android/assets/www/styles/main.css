@@ -13,7 +13,7 @@
 	margin: 0 auto;
 	outline: none;
 	padding-top: 24px;
-	padding-bottom: none;
+	padding-bottom:0;
 	border-left:none;
 	border-right:none;
 	border-top:none;
@@ -80,8 +80,11 @@
 }
 
 .search_box{
+	margin-top: 40px;
 	width:100%;
-	radius:10%
+	radius:10%;
+
+	/*border: #777;*/
 }
 
 .content_page{
@@ -98,10 +101,10 @@
 	height: 40px;
 	left: 0;
 	width: 100%;
-	fill: #009fab;
+	fill: #1aa9c0;
 	float:bottom;
 	vertical-align: middle;
-	background-color: #009fab;
+	background-color: #1aa9c0;
 }
 
 
@@ -127,42 +130,110 @@
 	background-color: #777;
 	text-align: center;
 	color: white;
-	background-color: #009fab;
 }
 
 .renamer{
 	display: none;
+	margin-left:5%;
+	padding: 5px;
+	height: 100%;
+	background-color: #bfbfbf;
+	border-radius: 25px;
 }
 
 .rename_container{
-	padding-top: 310px;
+	padding-top:10px;
 }
 
 .deleter{
+	position:fixed;
+	max-height:150px;
+	margin-left:5%;
 	display: none;
+	width: 70%;
+	padding: 5px 5px 0 0;
+	background-color: #bfbfbf;
+	border-radius: 25px;
+	/*transform: translate(0,-700px);*/
 }
 
 .delete_container{
-	padding-top: 310px;
+	margin-top: 10px;
+	/*padding-top:10px;*/
+	/*transform: translate(100%,0);*/
+}
+
+.delete_header{
+	margin-left:5%;
+	margin-bottom:2%;
+	float:left;
+
+}
+
+.subText{
+	font-size: smaller;
 }
 
 .column_content{
-	border-top:2px solid #00A9C2;
-	background: #fff;
-	padding: 5px;
-	min-height:300px;
-	height: 100%;
-	width:100%;
+
 }
 
 .pop_up_window{
-	position:absolute;
-	margin: 0 auto;
-	width: 100%;
-	min-height: 100vh;
+	margin-left: 50px;
+	width: 70%;
+	align-self: center;
+	align-content: center;
+	text-align: center;
 	display: none;
-	background: rgba(0,0,0,0.8);
+	/*box-shadow: 5px 5px 5px #888888;*/
+	background-color: #bfbfbf;
 	z-index: 14;
+	position: fixed;
+	top: 100px;
+	border-radius: 25px;
+
+
+	-webkit-filter: blur(0px);
+	/*-moz-filter: blur(20px);*/
+	/*-o-filter: blur(20px);*/
+	/*-ms-filter: blur(20px);*/
+	filter: blur(0px);
+	opacity: 0.9;
+}
+
+.popup_button_container{
+	bottom: 0;
+	width:80%;
+	border-radius: 25px;
+	transform: translate(5%);
+}
+
+.popup_button_cancel{
+	margin-top: 0%;
+	padding: 2% 70px 2% 70px;
+	float: left;
+	border-style: solid;
+	border: 2px;
+	width:50%
+}
+.popup_button_okay{
+	margin-top: 0%;
+	padding: 2% 70px 2% 70px;
+	float:right;
+	border-style: solid;
+	border: 2px;
+	width:50%;
+	color:green;
+}
+
+.popup_button_delete{
+	margin-top: 0%;
+	padding: 2% 70px 2% 70px;
+	float:right;
+	border-style: solid;
+	border: 2px;
+	width:50%;
+	color: red;
 }
 
 .profileImg{
@@ -171,17 +242,23 @@
 }
 
 .profileList{
-	float: right;
+	/*float: right;*/
+	padding-left:70px;
 }
 
-.profileListBut{
-	list-style-type: none;
-	padding-top:270px;
-	display: inline;
-	margin: 0 auto;
-	position:fixed;
+.profileListDiv{
+	/*padding-left:200px;*/
+	/*width: 100%;*/
+	/*text-align: center;*/
+}
+
+.profileListUL{
+	position: static;
+	margin-left: 50px;
 	text-align: center;
-	padding-left:90px;
+	align-content: center;
+	/*position: relative;*/
+	/*margin: auto;*/
 }
 
 .profileBut{
@@ -196,7 +273,7 @@
 }
 
 .profileDets{
-	position: fixed;
+	/*position: fixed;*/
 	float: top;
 	margin: 0 auto;
 }
@@ -208,9 +285,8 @@
 
 .renameList{
 	list-style-type: none;
+	margin-right:10%;
 }
-
-/*-------------------------*/
 
 .sr{
 	font-size: 16px;
@@ -221,4 +297,24 @@
 	padding-bottom: 6px;
 	border-bottom: thin;
 }
+
+.dropdown-menu-item{
+	font-size: large;
+	text-decoration: none;
+	padding: 10px;
+}
+
+.dropdown-menu-item-anchor{
+	text-decoration:none;
+}
+
+.filePreview{
+	padding-top: 40px;
+	width: 70%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
 

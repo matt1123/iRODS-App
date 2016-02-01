@@ -57,18 +57,18 @@ nav:not(.mm-menu)
 {
 	position: fixed;
 
-	background: #009fab;
+	background: #1aa9c0;
 	font-size: 16px;
 	font-weight: bold;
 	color: #fff;
 	line-height: 40px;
 
-
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;	
 	width: 100%;
-	height: 40px;
+	height: 40px; /* 40 for Android; 60 for iOS */
 	padding: 0 50px;
+	align-items: inherit;
 }
 .header.fixed
 {

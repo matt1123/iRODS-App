@@ -9,9 +9,14 @@
     <title>iRODS Mobile</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+
+
     <link rel="stylesheet" href="components/angular-message-center/message-center.css">
 
     <link rel="stylesheet" href="styles/app.css">
+    <link href="styles/mui.css" rel="stylesheet" type="text/css" />
     <!-- Bootstrap Core CSS -->
     <link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -20,7 +25,7 @@
     <link type="text/css" rel="stylesheet" href="styles/demo.css">
     <link type="text/css" rel="stylesheet" href="styles/jquery.mmenu.all.css">
 
-    <script src="components/angular/angular.min.js"></script>
+    <script src="components/angular/angular.js"></script>
     <script src="components/angular-route/angular-route.min.js"></script>
     <script src="components/angular-animate/angular-animate.min.js"></script>
     <script src="components/angular-message-center/dist/message-center.min.js"></script>
@@ -38,12 +43,80 @@
     <script src="home/fileServices.js"></script>
     <script src="subCol/subCol.js"></script>
 
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="js/ng-cordova.min.js"></script>
+    <script src="js/cordova.js"></script>
+
     <script src="js/httpInterceptors.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
 
+    <script src="js/mui.min.js"></script>
 
-    <!--Custom JS-->
+
+    <!--Custom JS Functions-->
+    <script type="text/javascript">
+
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        var fileTransfer;
+        var uri;
+        var fileURL;
+
+        function onDeviceReady() {
+            console.log(File);
+            console.log(FileTransfer);
+            console.log("Now safe to use cordova API");
+
+            fileTransfer = new FileTransfer();
+        }
+
+        function downloadTheFile(url, fileName){
+
+
+
+
+
+            console.log("you're here");
+            var filePath = encodeURI("/storage/emulated/0/Download/"+fileName);
+
+            var uri = encodeURI(url);
+
+            fileTransfer.download(
+                    uri,
+                    filePath,
+                    function(entry) {
+                        console.log("download complete: " + entry.fullPath);
+                    },
+                    function(error) {
+                        console.log("download error source " + error.source);
+                        console.log("download error target " + error.target);
+                        console.log("upload error code" + error.code);
+                    }
+            );
+        }
+
+
+    </script>
+
+
+    <script>
+
+        jQuery("document").ready(function($){
+
+            var nav = $('.profileListBut');
+
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 136) {
+                    nav.addClass("f-nav");
+                } else {
+                    nav.removeClass("f-nav");
+                }
+            });
+
+        });
+
+    </script>
 
     <script type="text/javascript">
         $(function() {
@@ -59,7 +132,8 @@
 
     <script>
         function doSearch() {
-            var searchText = document.getElementById('searchTerm').value;
+            //Get the input value as lower case
+            var searchText = document.getElementById('searchTerm').value.toUpperCase();
             var targetTable = document.getElementById('dataTable');
             var targetTableColCount;
 
@@ -78,41 +152,74 @@
                     rowData += targetTable.rows.item(rowIndex).cells.item(colIndex).textContent;
                 }
 
-                //If search term is not found in row data
+                //If search term (upper case) is not found in row data
                 //then hide the row, else show
-                if (rowData.indexOf(searchText) == -1)
+                if (rowData.toUpperCase().indexOf(searchText) == -1)
                     targetTable.rows.item(rowIndex).style.display = 'none';
                 else
                     targetTable.rows.item(rowIndex).style.display = 'table-row';
             }
         }
+
     </script>
+
+
+
 </head>
 
 
 
 <body>
 <div id="page">
-    <div class="header" class="menuBars" ng-controller="homeCtrl">
-        <a href="#menu" ng-hide="showMenu()"></a>
-        <!--Mobile App-->
-        {{appTitle}}
-    </div>
+
 
     <!--Menu-->
+    <div class="mui-appbar" ng-controller="homeCtrl">
+        <table width="100%" ng-hide="showMenu()">
+            <tr style="vertical-align:middle;">
 
-        <nav id="menu" ng-controller="homeCtrl">
-            <ul>
-                <li><a ng-click="goHome()">Home</a></li>
-                <li><a ng-click="goUpload()">Upload</a></li>
-                <li><a ng-click="logout_func()">Log Out</a></li>
-            </ul>
-        </nav>
+                <!--<div ng-controller="homeCtrl">-->
+                    <td class="mui-appbar-height">
+                        <div class="mui-dropdown">
+                            <button class="mui-btn" data-mui-color="primary" onclick="goBack()">
+                                &#10094
+                            </button>
+                        </div>
+                    </td>
+                <!--</div>-->
+
+                <div>
+                    <td>
+                        {{collectionListingDropdown.collectionAndDataObjectEntries}}
+                    </td>
+                </div>
+
+                <!--<div ng-controller="homeCtrl">-->
+                    <td class="mui-text-right" align="right">
+
+                        <div class="mui-dropdown">
+                            <button class="mui-btn" data-mui-color="primary" data-mui-toggle="dropdown">
+                                &#8942
+                            </button>
+                            <ul class="mui-dropdown-menu" data-mui-align="right">
+                                <li class="dropdown-menu-item" ng-show="shouldHideUpload() == false"><a class="dropdown-menu-item-anchor" ng-click="upload_pop_up_open()">Upload</a></li>
+                                <li class="dropdown-menu-item"><a class="dropdown-menu-item-anchor" >Cloud Browser</a></li>
+                                <li class="dropdown-menu-item"><a class="dropdown-menu-item-anchor" ng-click="logout_func()">Log Out</a></li>
+                            </ul>
+                        </div>
+                        <!--</div>-->
+                    </td>
+            </tr>
+        </table>
+
+    </div>
+
+
 
 
     <!--Content-->
 
-    <div class="content_page">
+    <div class="content_page" style="width:100%; overflow-x:hidden;">
         <!--Where Page Will Be Injected by Angular----->
         <div ng-app="myApp">
             <!-- angular templating -->
